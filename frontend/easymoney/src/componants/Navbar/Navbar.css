@@ -3,5 +3,17 @@
     justify-content: center;
     align-items: center;
     align-content: center;
+    gap: 10px;
+
+}
+
+#nav-mid{
+    background-color: white;
+    flex:1;
+    padding: 20px 20px 20px 20px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    font-weight: 700;
 
 }

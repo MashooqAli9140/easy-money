@@ -8,6 +8,10 @@ const Navbar = () => {
       <div id='navleft' style={ { width:"250px" , backgroundColor:"#212426"}}>
           <img style={{ width:'100%'}} src= {Logo} alt="Logo" />
       </div>
+      <div id='nav-mid'>
+            <a href="/"> Mutual Funds </a>
+            <a href="/"> Stocks </a>
+      </div>
       <div id='navright'>
           <button> Login </button>
           <button> SignUp </button>
