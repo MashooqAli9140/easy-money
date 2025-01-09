@@ -17,3 +17,29 @@
     font-weight: 700;
 
 }
+#navright{
+    /* background-color: white; */
+    padding: 20px 20px 20px 20px;
+    display: flex;
+        /* gap: 10px; */
+}
+#login-btn,#signup-btn{
+    background: none;
+    border:none;
+    outline:none;
+    padding: 10px 20px 10px 20px;
+    color: white;
+    cursor: pointer;
+}
+#login-btn:hover{
+    background: #00B852;
+    color: white;
+    cursor: pointer;
+    font-weight: 600;
+}
+#signup-btn:hover{
+    background: #00B852;
+    color: white;
+    cursor: pointer;
+    font-weight: 600;
+}

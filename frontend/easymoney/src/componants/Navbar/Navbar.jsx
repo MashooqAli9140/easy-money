@@ -13,8 +13,8 @@ const Navbar = () => {
             <a href="/"> Stocks </a>
       </div>
       <div id='navright'>
-          <button> Login </button>
-          <button> SignUp </button>
+          <button id='login-btn'> Login </button>
+          <button id='signup-btn' > SignUp </button>
       </div>
     </div>
   )
