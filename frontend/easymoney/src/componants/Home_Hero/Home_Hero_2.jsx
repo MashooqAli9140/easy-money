@@ -6,7 +6,8 @@ const Home_Hero_2 = () => {
   return (
        <div id='home-hero-2'>
        <div id='home-hero-left-2'>
-        <div style={{ padding:"10px 10px 10px 10px", margin:"0 auto 0", maxWidth:"300px"}}>
+        <div style={{ padding:"2px 10px 10px 2px", margin:"0 auto 0", maxWidth:"300px"}}>
+        <img id='return-img' style={{ width:"100%"}} src= {returns} alt="grow_icon" />
         <h1 style={{ fontSize:"65px"}}> Simplified data for Amazingg returns </h1>
         </div>
        </div>
