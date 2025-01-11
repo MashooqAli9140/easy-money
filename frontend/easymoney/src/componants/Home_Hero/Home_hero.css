@@ -1,0 +1,51 @@
+#home-hero{
+    background-color: #2b4162;
+    background-image: linear-gradient(315deg, #2b4162 0%, #12100e 74%);
+    padding: 30px 30px 30px 30px;
+    display: flex;
+    justify-content: center;
+}
+#home-hero-left{
+    /* background-color: red; */
+    padding: 30px 50px 30px 50px;
+    flex: 1;
+    color: white;  
+}
+#home-hero-right{
+    /* background-color: yellow; */
+    padding: 5px 5px 5px 5px;
+    flex: 1; 
+}
+#start-btn-div{
+    /* background-color: antiquewhite; */
+    padding: 10px 0px 10px 0px;
+    bottom: 0; 
+}
+#grow-icon-div{
+    width: 400px;
+    max-width: 400px;
+    object-fit: contain;
+    /* border: 2px solid white; */
+    margin: 0 auto 0;
+    display: flex;
+    justify-content: center;
+    animation: bounce 3s infinite ease-in-out;
+}
+@keyframes bounce{
+    
+    0%{
+        transform: translateY(-7px);
+    }
+    50%{
+        transform: translateY(7px);
+    }
+    100%{
+        transform: translateY(-7px);
+    }
+}
+
+@media screen and (max-width:900px) {
+    #home-hero-right{
+      display: none;
+    }
+}
