@@ -7,9 +7,13 @@
 }
 #home-hero-left{
     /* background-color: red; */
-    padding: 30px 50px 30px 50px;
+    padding: 30px 5px 30px 5px;
     flex: 1;
     color: white;  
+    /* text-align: center; */
+}
+#home-hero-left h1{
+   font-size: 48px;
 }
 #home-hero-right{
     /* background-color: yellow; */
@@ -19,8 +23,12 @@
 #start-btn-div{
     /* background-color: antiquewhite; */
     padding: 10px 0px 10px 0px;
-    bottom: 0; 
+    margin-top: 10px;
 }
+#start-btn{
+    cursor: pointer;
+}
+
 #grow-icon-div{
     width: 400px;
     max-width: 400px;
@@ -31,6 +39,8 @@
     justify-content: center;
     animation: bounce 3s infinite ease-in-out;
 }
+
+
 @keyframes bounce{
     
     0%{
