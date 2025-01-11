@@ -11,6 +11,8 @@ const Navbar = () => {
       <div id='nav-mid'>
             <a href="/"> Mutual Funds </a>
             <a href="/"> Stocks </a>
+            <a href="/"> NPS </a>
+            <a href="/"> SIP Calculator </a>
       </div>
       <div id='navright'>
           <button id='login-btn'> Login </button>
