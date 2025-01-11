@@ -1,0 +1,24 @@
+/* //home hero section 2 */
+
+#home-hero-2{
+    background-color: #ffffff;
+    padding: 30px 50px 30px 50px;
+    display: flex;
+    justify-content: center;
+}
+#home-hero-left-2{
+    /* background-color: aquamarine; */
+    padding: 50px 50px 50px 50px;
+    flex: 1;
+    color: rgb(0, 0, 0);
+}
+#home-hero-right-2{
+    /* background-color: rgb(0, 158, 61); */
+    flex: 1;
+}
+
+@media screen and ( max-width:900px) {
+    #home-hero-right-2{
+       display: none;
+    }
+}

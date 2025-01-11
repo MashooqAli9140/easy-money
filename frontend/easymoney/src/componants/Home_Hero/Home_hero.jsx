@@ -25,6 +25,7 @@ const Home_hero = () => {
         </div>
       
     </div>
+
   )
 }
 
