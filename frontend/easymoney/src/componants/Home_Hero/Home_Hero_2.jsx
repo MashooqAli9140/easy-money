@@ -9,7 +9,7 @@ const Home_Hero_2 = () => {
         <div style={{ padding:"2px 10px 10px 2px", margin:"0 auto 0", maxWidth:"300px"}}>
         <img id='return-img' style={{ width:"100%"}} src= {returns} alt="grow_icon" />
         <h1 style={{ fontSize:"65px"}}> Simplified data for Amazingg returns </h1>
-        <h4 style={{ fontWeight:100}}> You win at investing when you make sense of complex data. ET Money presents you all the useful data in the most simplified manner that helps you separate the investing signals from the noise. </h4>
+        <h4 style={{ fontWeight:100}}> You win at investing when you make sense of complex data. Easy Money presents you all the useful data in the most simplified manner that helps you separate the investing signals from the noise. </h4>
         </div>
        </div>
 
