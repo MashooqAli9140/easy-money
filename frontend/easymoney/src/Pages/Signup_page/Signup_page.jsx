@@ -33,7 +33,7 @@ const Signup_page = () => {
             mobile_num
            }
            try {
-                const response  = await axios.post( 'http://localhost:5173/user-signup-data', user_data,{
+                const response  = await axios.post('http://localhost:3000/user-signup-data', user_data,{
                    headers:{},
                 } )
             alert("signup success");

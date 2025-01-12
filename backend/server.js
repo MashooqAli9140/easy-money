@@ -8,6 +8,7 @@ const signup_data = require('./model/signup_data.js')
 const Bcrypt = require('bcrypt');
 
 
+
 //DATABCE CONNECTED
 connectDB();
 
