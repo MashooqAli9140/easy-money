@@ -2,9 +2,11 @@ import React from 'react'
 import Logo from "/images/Logo.png"
 import './Navbar.css';
 import { useState } from 'react';
+import { useParams } from 'react-router-dom'
 
 const Navbar = () => {
       const [ openmenu , setopenmenu ] = useState(false);
+      const { username } = useParams();
 
 
   return (
@@ -17,10 +19,10 @@ const Navbar = () => {
       </div>
 
       <div id='nav-mid'>
-            <a href="/"> Mutual Funds </a>
-            <a href="/"> Stocks </a>
-            <a href="/"> NPS </a>
-            <a href="/"> SIP Calculator </a>
+            <a href={ username ?'/mutualFunds' :'/signup' }  > Mutual Funds </a>
+            <a href={ username ?'/stocks' :'/signup' }> Stocks </a>
+            <a href={ username ?'/nps' :'/signup' }> NPS </a>
+            <a href={ username ?'/sip-calculator' :'/signup' }> SIP Calculator </a>
       </div>
 
       <div id='navright'>
