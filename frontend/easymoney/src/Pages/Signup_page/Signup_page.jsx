@@ -3,10 +3,15 @@ import Logo from '/public/images/Logo.png'
 import './Signup_page.css'
 
 const Signup_page = () => {
-
     const [openlogin , setopenLogin] = useState("none")
     const [opensignup , setopensignup] = useState("block")
+    const [ name , setName ] = useState("");
+    const [ email , setEmail ] = useState("");
+    const [ password , setPassword ] = useState("");
+    const [ mobile_num , setMobile_num ] = useState("");
 
+
+    
     function openloginform(e){
         e.preventDefault();
         setopenLogin("block");
@@ -32,20 +37,22 @@ const Signup_page = () => {
             <div id='form-inputs'>
                 <form>
                     <div style={{ padding:"5px 5px 5px 5px"}}>
-                       <input id='name-input' type="text" placeholder='Enter Your Name' />
+                       <input onChange={ (e) => setName(e.target.value) } id='name-input' type="text" placeholder='Enter Your Name' />
                     </div>
                     <div style={{ padding:"5px 5px 5px 5px"}}>
-                       <input id='name-input' type="text" placeholder='Enter Email' />
+                       <input onChange={ (e) => setEmail(e.target.value) } id='name-input' type="text" placeholder='Enter Email' />
                     </div>
                     <div style={{ padding:"5px 5px 5px 5px"}}>
-                       <input id='name-input' type="text" placeholder='Enter Password' />
+                       <input onChange={ (e) => setPassword(e.target.value) } id='name-input' type="text" placeholder='Enter Password' />
                     </div>
                     <div style={{ padding:"5px 5px 5px 5px"}}>
-                       <input id='name-input' type="text" placeholder='Enter Mobile Number' />
+                       <input onChange={ (e) => setMobile_num(e.target.value) } id='name-input' type="text" placeholder='Enter Mobile Number' />
                     </div>
                     <div style={{ padding:"5px 5px 5px 5px", marginTop:"10px"}}>
                         <button id='signup-form-btn'> Sign up </button>
                     </div>
+                    </form>
+
                     <div style={{ padding:"5px 5px 5px 5px", marginTop:"10px"}}>
                         <div style={{ fontWeight:"100", display:'flex',flexGrow:"grow", justifyContent:"center", gap:"5px"}}>
                             <p>Already have an account?</p>
@@ -57,7 +64,6 @@ const Signup_page = () => {
                             <button style={{ cursor:"pointer", background:'none', border:'none',outline:'none',fontSize:"18px",color:"blue"}}> Reset </button>
                         </div>
                     </div>
-                </form>
             </div>
         </div>
 {/* //SIGN FORM END */}
