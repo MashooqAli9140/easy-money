@@ -4,7 +4,7 @@ const app = express();
 const cors = require('cors');
 const mongoose = require('mongoose');
 const connectDB = require('./config/db.js');
-
+const signup_data = require('./model/signup_data.js')
 
 
 //DATABCE CONNECTED
