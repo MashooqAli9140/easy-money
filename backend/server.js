@@ -12,6 +12,14 @@ const Bcrypt = require('bcrypt');
 //DATABCE CONNECTED
 connectDB();
 
+app.use( cors( {
+    origin: [
+        'http://localhost:5173', //for development
+    ],
+    methods:[ 'GET', 'PUT' , 'POST' , 'DELETE'],
+    credentials:true, //Allow cookie if needed
+}))
+
 
 
 app.post('/user-signup-data', async( req,res ) => {
