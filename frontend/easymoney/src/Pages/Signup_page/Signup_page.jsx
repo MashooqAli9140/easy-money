@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Logo from '/public/images/Logo.png'
 import './Signup_page.css'
+import axios from 'axios';
 
 const Signup_page = () => {
     const [openlogin , setopenLogin] = useState("none")
@@ -32,9 +33,14 @@ const Signup_page = () => {
             mobile_num
            }
            try {
-            
+                const response  = await axios.post( 'http://localhost:5173/user-signup-data', user_data,{
+                   headers:{},
+                } )
+            alert("signup success");
+            return response.status; 
            } catch (error) {
-            
+              console.log("error while creating accoung" , error.msge );
+              alert("error while sending");
            }
     }
 
