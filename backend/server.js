@@ -12,6 +12,7 @@ const Bcrypt = require('bcrypt');
 //DATABCE CONNECTED
 connectDB();
 
+
 app.use( cors( {
     origin: [
         'http://localhost:5173', //for development
@@ -22,7 +23,7 @@ app.use( cors( {
 
 
 
-app.post('/user-signup-data', async( req,res ) => {
+app.post("/user-signup-data", async( req , res ) => {
     const { name , email , password , mobile_num } = req.body;
     if( !name || !email || !password || !mobile_num ) return res.status(401).json( {"msge" : "sign up data missing"});
 
