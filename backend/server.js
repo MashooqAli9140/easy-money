@@ -3,6 +3,13 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 const mongoose = require('mongoose');
+const connectDB = require('./config/db.js');
+
+
+
+//DATABCE CONNECTED
+connectDB();
+
 
 
 
