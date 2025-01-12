@@ -23,6 +23,23 @@ const Signup_page = () => {
         setopensignup("block");
     } 
 
+    async function SendUserSignup(e){
+           e.preventDefault();
+           const user_data = {
+            name,
+            email,
+            password,
+            mobile_num
+           }
+           try {
+            
+           } catch (error) {
+            
+           }
+    }
+
+
+
 
   return (
     <div style={{display:'flex',justifyContent:'center', backgroundColor:"white", padding:"40px 20px 40px 20px"}}>
@@ -35,7 +52,7 @@ const Signup_page = () => {
             </div>
             {/* //signup or login form inputs */}
             <div id='form-inputs'>
-                <form>
+                <form onSubmit={ (e) => SendUserSignup(e)}>
                     <div style={{ padding:"5px 5px 5px 5px"}}>
                        <input onChange={ (e) => setName(e.target.value) } id='name-input' type="text" placeholder='Enter Your Name' />
                     </div>
@@ -49,7 +66,7 @@ const Signup_page = () => {
                        <input onChange={ (e) => setMobile_num(e.target.value) } id='name-input' type="text" placeholder='Enter Mobile Number' />
                     </div>
                     <div style={{ padding:"5px 5px 5px 5px", marginTop:"10px"}}>
-                        <button id='signup-form-btn'> Sign up </button>
+                        <button type='submit' id='signup-form-btn'> Sign up </button>
                     </div>
                     </form>
 
