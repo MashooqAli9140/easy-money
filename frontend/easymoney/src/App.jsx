@@ -5,7 +5,7 @@ import Home_hero from './componants/Home_Hero/Home_hero.jsx';
 import Home_Hero_2 from './componants/Home_Hero/Home_Hero_2.jsx';
 import Signup from './componants/signup/Signup.jsx';
 import Footer from './componants/footer/Footer.jsx';
-
+import Signup_page from './Pages/Signup_page/Signup_page.jsx';
 function App() {
 
 
@@ -24,6 +24,9 @@ function App() {
         </Routes>
         <Routes>
           <Route path='/'  element={ <Footer/> } />
+        </Routes>
+        <Routes>
+          <Route path='/signup'  element={ <Signup_page/> } />
         </Routes>
 
     </BrowserRouter>
