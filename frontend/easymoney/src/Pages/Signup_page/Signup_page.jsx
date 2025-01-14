@@ -33,7 +33,7 @@ const Signup_page = () => {
             password,
             mobile_num
            }
- 
+           if( !name || !email || !password || !mobile_num ) return alert("please fill all the details");
 
            try {
                 const response  = await axios.post('http://localhost:3000/user-signup-data', user_data,{
