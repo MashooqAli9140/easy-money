@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Logo from '/public/images/Logo.png'
 import './Signup_page.css'
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom'
 
 const Signup_page = () => {
     const [openlogin , setopenLogin] = useState("none")
@@ -11,6 +12,7 @@ const Signup_page = () => {
     const [ password , setPassword ] = useState("");
     const [ mobile_num , setMobile_num ] = useState("");
     const [ openerror , setOpenError ] = useState("none");
+    const navigate = useNavigate();
 
 
     
@@ -78,6 +80,7 @@ const Signup_page = () => {
          setEmail("")
          setPassword("")
          setOpenError('none');
+         navigate("/dashboard")
          return response.status
     } catch (error) {
         alert("error while login");
