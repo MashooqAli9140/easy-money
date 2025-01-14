@@ -6,11 +6,11 @@ import Portfolio from "./Portfolio";
 
 const Dashboard = () => {
   const { id } = useParams();
-  const { login, setLogin } = useGlobleContext();
+  const { login, setLogin , login_user , setlogin_user  } = useGlobleContext();
   if (id) {
     setLogin(true);
+    setlogin_user(id)
   }
-
   return (
     <div id="dashboard-hero">
 
