@@ -7,7 +7,8 @@ const GlobleContext = createContext();
 
 export const GlobleProvider = ( {children} ) => {
        const [ login , setLogin ] = useState(false);
-       const [ login_user , setlogin_user ] = useState({})
+       const [ login_user , setlogin_user ] = useState( {} )
+       const [ login_user_data , setlogin_user_data ] = useState({})
 
 
        //create function for getting user data from backend
@@ -17,14 +18,13 @@ export const GlobleProvider = ( {children} ) => {
                const response = await axios.get(`http://localhost:3000/get-user-data/${login_user}`,{
 
                })
-               return response.status(200).json({'msge':"user data get success"})
+               setlogin_user_data( response.data.userdata )
             } catch (error) {
                console.log(error.msge , "error while getting the data")
-               alert("user data not get");
             }
       }
-      GetUserData()
-    },login_user)
+      if(login_user) GetUserData();
+    },[login_user])
 
 
        
