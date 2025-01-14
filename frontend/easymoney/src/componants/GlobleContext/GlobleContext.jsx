@@ -5,11 +5,10 @@ import { useParams } from 'react-router-dom';
 const GlobleContext = createContext();
 
 export const GlobleProvider = ( {children} ) => {
-       const { id } = useParams();
-
-
+       const[ login , setLogin ] = useState(false);
+       
     return(
-        <GlobleContext.Provider value={{ id }}>
+        <GlobleContext.Provider value={{ login , setLogin }}>
             { children }
         </GlobleContext.Provider>
     )

@@ -4,7 +4,9 @@ import { useGlobleContext } from '../../componants/GlobleContext/GlobleContext';
 
 const Dashboard = () => {
   const { id } = useParams();
-
+  const { login , setLogin } = useGlobleContext();
+  if( id ) setLogin(true);
+  
   return (
     <div>
          <div> 

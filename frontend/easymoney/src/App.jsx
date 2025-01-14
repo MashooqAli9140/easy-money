@@ -15,6 +15,7 @@ function App() {
     <> 
 <GlobleProvider>
     <BrowserRouter>
+
         <Navbar />
         <Routes>
           <Route path='/'  element={ <Home_hero/> } />
@@ -34,7 +35,7 @@ function App() {
         <Routes>
           <Route path='/dashboard/:id'  element={ <Dashboard/> } />
         </Routes>
-
+        
     </BrowserRouter>
 </GlobleProvider>
  

@@ -8,25 +8,25 @@ import { useGlobleContext } from '../../componants/GlobleContext/GlobleContext';
 
 const Navbar = () => {
       const [ openmenu , setopenmenu ] = useState(false);
-      
+      const { login , setLogin } = useGlobleContext();
   return (
     <div>
       
-    <div id='nav-main-box' style={{ padding:"10px 20px 10px 20px", width:'100%' ,backgroundColor:"#212426"}}>
+    <div id='nav-main-box' style={{ padding:"10px 20px 10px 20px", width:'100%' , backgroundColor:"#212426"}}>
       <div id='navleft' style={ { width:"250px", maxwidth:"250px"}}>
-        <a href= { id ? "/dashboard" : "/"} >
+        <a href= '/' >
         <img style={{ width:'100%' ,height:"auto"}} src= {Logo} alt="Logo" />
         </a>
       </div>
 
       <div id='nav-mid'>
-            <a href={ id ?'/mutualFunds' :'/signup' }  > Mutual Funds </a>
-            <a href={ id ?'/stocks' :'/signup' }> Stocks </a>
-            <a href={ id ?'/nps' :'/signup' }> NPS </a>
-            <a href={ id ?'/sip-calculator' :'/signup' }> SIP Calculator </a>
+            <a href='/mutualFunds'> Mutual Funds </a>
+            <a href='/stocks'> Stocks </a>
+            <a href='/nps'> NPS </a>
+            <a href='/sip-calculator'> SIP Calculator </a>
       </div>
 
-      <div id='navright'>
+      <div id='navright' style={{ display: login ? "none":"flex" }} >
           <button id='login-btn'> Login </button>
           <button id='signup-btn' > SignUp </button>
         <div id='nav-right-menu'>

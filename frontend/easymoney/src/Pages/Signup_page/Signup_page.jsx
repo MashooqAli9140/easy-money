@@ -2,7 +2,9 @@ import React, { useState } from 'react'
 import Logo from '/public/images/Logo.png'
 import './Signup_page.css'
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
+import { useGlobleContext } from '../../componants/GlobleContext/GlobleContext';
+
 
 const Signup_page = () => {
     const [openlogin , setopenLogin] = useState("none")
@@ -13,9 +15,8 @@ const Signup_page = () => {
     const [ mobile_num , setMobile_num ] = useState("");
     const [ openerror , setOpenError ] = useState("none");
     const navigate = useNavigate();
+    const { login , setLogin } = useGlobleContext();
 
-
-    
     function openloginform(e){
         e.preventDefault();
         setopenLogin("block");
@@ -77,6 +78,7 @@ const Signup_page = () => {
             headers:{ 'Content-type' : 'application/json'},
          })
          alert("login success");
+         setLogin(true);
          navigate(`/dashboard/${response.data.userDetails._id}`)
          setEmail("")
          setPassword("")
