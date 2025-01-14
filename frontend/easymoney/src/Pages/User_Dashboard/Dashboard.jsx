@@ -1,5 +1,6 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
+import { useGlobleContext } from '../../componants/GlobleContext/GlobleContext';
 
 const Dashboard = () => {
   const { id } = useParams();
@@ -7,7 +8,7 @@ const Dashboard = () => {
   return (
     <div>
          <div> 
-            <h1> Welcome to Dashboard {id} </h1>
+            <h1> Welcome to Dashboard {id} and id from context { id } </h1>
          </div>
     </div>
   )

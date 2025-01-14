@@ -7,13 +7,13 @@ import Signup from './componants/signup/Signup.jsx';
 import Footer from './componants/footer/Footer.jsx';
 import Signup_page from './Pages/Signup_page/Signup_page.jsx';
 import Dashboard from './Pages/User_Dashboard/Dashboard.jsx';
-
-
+import { GlobleProvider } from './componants/GlobleContext/GlobleContext.jsx';
 
 function App() {
 
   return (
     <> 
+<GlobleProvider>
     <BrowserRouter>
         <Navbar />
         <Routes>
@@ -36,6 +36,7 @@ function App() {
         </Routes>
 
     </BrowserRouter>
+</GlobleProvider>
  
     </>
   )
