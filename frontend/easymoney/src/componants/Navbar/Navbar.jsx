@@ -6,27 +6,27 @@ import { useParams } from 'react-router-dom'
 
 const Navbar = () => {
       const [ openmenu , setopenmenu ] = useState(false);
-      const { username } = useParams();
-
+      const { id } = useParams();
+      console.log("id is this-->", id );
 
   return (
     <div>
       
     <div id='nav-main-box' style={{ padding:"10px 20px 10px 20px", width:'100%' ,backgroundColor:"#212426"}}>
       <div id='navleft' style={ { width:"250px", maxwidth:"250px"}}>
-        <a href= { username ? "/dashboard" : "/"} >
+        <a href= { id ? "/dashboard" : "/"} >
         <img style={{ width:'100%' ,height:"auto"}} src= {Logo} alt="Logo" />
         </a>
       </div>
 
       <div id='nav-mid'>
-            <a href={ username ?'/mutualFunds' :'/signup' }  > Mutual Funds </a>
-            <a href={ username ?'/stocks' :'/signup' }> Stocks </a>
-            <a href={ username ?'/nps' :'/signup' }> NPS </a>
-            <a href={ username ?'/sip-calculator' :'/signup' }> SIP Calculator </a>
+            <a href={ id ?'/mutualFunds' :'/signup' }  > Mutual Funds </a>
+            <a href={ id ?'/stocks' :'/signup' }> Stocks </a>
+            <a href={ id ?'/nps' :'/signup' }> NPS </a>
+            <a href={ id ?'/sip-calculator' :'/signup' }> SIP Calculator </a>
       </div>
 
-      <div id='navright'>
+      <div id='navright' style={{ display: id ? "none" : "flex" }}>
           <button id='login-btn'> Login </button>
           <button id='signup-btn' > SignUp </button>
         <div id='nav-right-menu'>
