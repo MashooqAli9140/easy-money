@@ -3,12 +3,12 @@ import Logo from "/images/Logo.png"
 import './Navbar.css';
 import { useState } from 'react';
 import { useParams } from 'react-router-dom'
+import { useGlobleContext } from '../../componants/GlobleContext/GlobleContext';
+
 
 const Navbar = () => {
       const [ openmenu , setopenmenu ] = useState(false);
-      const { id } = useParams();
-      console.log("id is this-->", id );
-
+      
   return (
     <div>
       
@@ -26,7 +26,7 @@ const Navbar = () => {
             <a href={ id ?'/sip-calculator' :'/signup' }> SIP Calculator </a>
       </div>
 
-      <div id='navright' style={{ display: id ? "none" : "flex" }}>
+      <div id='navright'>
           <button id='login-btn'> Login </button>
           <button id='signup-btn' > SignUp </button>
         <div id='nav-right-menu'>
