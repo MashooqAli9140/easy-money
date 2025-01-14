@@ -6,17 +6,26 @@ import Portfolio from "./Portfolio";
 
 const Dashboard = () => {
   const { id } = useParams();
-  const { login, setLogin , login_user , setlogin_user } = useGlobleContext();
+  const { login, setLogin , login_user , setlogin_user , login_user_data } = useGlobleContext();
   if (id) {
     setLogin(true);
     setlogin_user(id)
   }
 
+if( !login_user_data)
+{
+  return(
+    <div style={{ backgroundColor:"red", padding:"20px 20px 20px 20px"}}>
+      <h1> Loading.... </h1>
+    </div>
+  )
+}
+
   return (
     <div id="dashboard-hero">
 
       <div id="dashboard-hero-header">
-           <h1> hello User nice to meet you! </h1>
+           <h1 style={{ fontWeight:"100"}}> <b> { login_user_data && login_user_data.name } </b> nice to meet you! </h1>
            <br />
           <p>
             Welcome aboard. Start investing or upload your external wealth to

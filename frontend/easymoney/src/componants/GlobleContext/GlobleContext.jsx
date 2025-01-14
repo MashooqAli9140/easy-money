@@ -29,7 +29,7 @@ export const GlobleProvider = ( {children} ) => {
 
        
     return(
-        <GlobleContext.Provider value={{ login , setLogin , login_user , setlogin_user}}>
+        <GlobleContext.Provider value={{ login , setLogin , login_user , login_user_data , setlogin_user}}>
             { children }
         </GlobleContext.Provider>
     )
