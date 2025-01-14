@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { useGlobleContext } from "../../componants/GlobleContext/GlobleContext";
 import "./Dashboard.css";
 import Portfolio from "./Portfolio";
+import Navbar from "../../componants/Navbar/Navbar";
 
 const Dashboard = () => {
   const { id } = useParams();
@@ -22,8 +23,9 @@ if( !login_user_data)
 }
 
   return (
+    <>
+    <Navbar />
     <div id="dashboard-hero">
-
       <div id="dashboard-hero-header">
            <h1 style={{ fontWeight:"100"}}> <b> { login_user_data && login_user_data.name } </b> nice to meet you! </h1>
            <br />
@@ -70,6 +72,7 @@ if( !login_user_data)
       <div style= {{height: '1px' , backgroundColor: 'grey', opacity: '0.5', margin: '30px auto 30px', maxWidth:"1200px"}} ></div><Portfolio />
     
     </div>
+    </>
   );
 };
 

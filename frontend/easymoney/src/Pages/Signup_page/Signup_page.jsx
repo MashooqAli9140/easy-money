@@ -4,7 +4,7 @@ import './Signup_page.css'
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useGlobleContext } from '../../componants/GlobleContext/GlobleContext';
-
+import Navbar from '../../componants/Navbar/Navbar';
 
 const Signup_page = () => {
     const [openlogin , setopenLogin] = useState("none")
@@ -101,8 +101,9 @@ const Signup_page = () => {
 
 
   return (
+    <>
+    <Navbar />
     <div style={{display:'flex',justifyContent:'center', backgroundColor:"white", padding:"40px 20px 40px 20px"}}>
-
 {/* //SIGN FORM  */}
         <div id='signup_form' style={{ display:opensignup }}>
             {/* //form logo */}
@@ -180,6 +181,7 @@ const Signup_page = () => {
         </div>
 
     </div>
+    </>
   )
 }
 

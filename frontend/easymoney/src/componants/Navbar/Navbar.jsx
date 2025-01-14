@@ -8,7 +8,8 @@ import { useGlobleContext } from '../../componants/GlobleContext/GlobleContext';
 
 const Navbar = () => {
       const [ openmenu , setopenmenu ] = useState(false);
-      const { login, setLogin , login_user , setlogin_user , login_user_data } = useGlobleContext();
+      const { id } = useParams();
+
 
   return (
     <div>
@@ -21,13 +22,13 @@ const Navbar = () => {
       </div>
 
       <div id='nav-mid'>
-            <a href= { login_user_data._id ? `/dashboard/${login_user_data._id}/mutualFunds`:"/signup" }> Mutual Funds </a>
+            <a href= { id ? `/dashboard/${id}}/mutualFunds`:"/signup" }> Mutual Funds </a>
             <a href='/stocks'> Stocks </a>
             <a href='/nps'> NPS </a>
             <a href='/sip-calculator'> SIP Calculator </a>
       </div>
 
-      <div id='navright' style={{ display: login_user_data._id  ? "none" : "flex"}} >
+      <div id='navright' style={{ display: id ? "none" : "flex"}} >
         <a href="/signup"> <button id='login-btn'> Login </button> </a>
         <a href="/signup"> <button id='signup-btn' > SignUp </button> </a>
 

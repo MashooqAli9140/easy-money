@@ -1,9 +1,11 @@
 import React from 'react';
 import './Home_hero.css';
 import Grow from "/images/Grow.png"
-
+import Navbar from '../Navbar/Navbar';
 const Home_hero = () => {
   return (
+    <>
+    <Navbar />
     <div id='home-hero'>
         <div id='home-hero-left'>
             <h1> Grow wealth. </h1> 
@@ -26,6 +28,7 @@ const Home_hero = () => {
       
     </div>
 
+    </>
   )
 }
 
