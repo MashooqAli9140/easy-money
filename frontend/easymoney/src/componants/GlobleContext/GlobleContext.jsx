@@ -9,7 +9,7 @@ export const GlobleProvider = ( {children} ) => {
        const [ login_user , setlogin_user ] = useState({})
        
     return(
-        <GlobleContext.Provider value={{ login , setLogin }}>
+        <GlobleContext.Provider value={{ login , setLogin , login_user , setlogin_user }}>
             { children }
         </GlobleContext.Provider>
     )
