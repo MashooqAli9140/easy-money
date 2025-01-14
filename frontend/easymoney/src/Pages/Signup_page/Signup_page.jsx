@@ -10,6 +10,7 @@ const Signup_page = () => {
     const [ email , setEmail ] = useState("");
     const [ password , setPassword ] = useState("");
     const [ mobile_num , setMobile_num ] = useState("");
+    const [ openerror , setOpenError ] = useState("none");
 
 
     
@@ -23,6 +24,14 @@ const Signup_page = () => {
         setopenLogin("none");
         setopensignup("block");
     } 
+
+    //when passowrd or email is icorrect then show error for 5 SECONDS
+    if( openerror === "block" ){
+        const errorTimeout = setTimeout( ()=> {
+            setOpenError("none")
+      },5000)
+    }
+
 
 //SIGN UP REQ FUNCTION
     async function SendUserSignup(e){
@@ -66,9 +75,18 @@ const Signup_page = () => {
             headers:{ 'Content-type' : 'application/json'},
          })
          alert("login success");
+         setEmail("")
+         setPassword("")
+         setOpenError('none');
          return response.status
     } catch (error) {
         alert("error while login");
+        if( error.msge === 'email not registered' || 'password not matched' )
+             {
+            setEmail("")
+            setPassword("")
+            setOpenError('block');
+             }
         console.log(error.msge);
     }
  } 
@@ -89,16 +107,16 @@ const Signup_page = () => {
             <div id='form-inputs'>
                 <form onSubmit={ (e) => SendUserSignup(e)}>
                     <div style={{ padding:"5px 5px 5px 5px"}}>
-                       <input onChange={ (e) => setName(e.target.value) } id='name-input' type="text" placeholder='Enter Your Name' />
+                       <input value={ name } onChange={ (e) => setName(e.target.value) } id='name-input' type="text" placeholder='Enter Your Name' />
                     </div>
                     <div style={{ padding:"5px 5px 5px 5px"}}>
-                       <input onChange={ (e) => setEmail(e.target.value) } id='name-input' type="text" placeholder='Enter Email' />
+                       <input value={ email } onChange={ (e) => setEmail(e.target.value) } id='name-input' type="text" placeholder='Enter Email' />
                     </div>
                     <div style={{ padding:"5px 5px 5px 5px"}}>
-                       <input onChange={ (e) => setPassword(e.target.value) } id='name-input' type="text" placeholder='Enter Password' />
+                       <input value={ password } onChange={ (e) => setPassword(e.target.value) } id='name-input' type="text" placeholder='Enter Password' />
                     </div>
                     <div style={{ padding:"5px 5px 5px 5px"}}>
-                       <input onChange={ (e) => setMobile_num(e.target.value) } id='name-input' type="text" placeholder='Enter Mobile Number' />
+                       <input value={ mobile_num } onChange={ (e) => setMobile_num(e.target.value) } id='name-input' type="text" placeholder='Enter Mobile Number' />
                     </div>
                     <div style={{ padding:"5px 5px 5px 5px", marginTop:"10px"}}>
                         <button type='submit' id='signup-form-btn'> Sign up </button>
@@ -128,10 +146,13 @@ const Signup_page = () => {
             <div id='form-inputs'>
                 <form onSubmit={ (e) => SendLoginReq(e) }>
                     <div style={{ padding:"5px 5px 5px 5px"}}>
-                       <input id='name-input' type="text" placeholder='Enter Email' />
+                       <input value={ email } onChange={ (e) => setEmail( e.target.value )} id='name-input' type="text" placeholder='Enter Email' />
                     </div>
                     <div style={{ padding:"5px 5px 5px 5px"}}>
-                       <input id='name-input' type="text" placeholder='Enter Password' />
+                       <input value={ password } onChange={ (e) => setPassword( e.target.value )}  id='name-input' type="text" placeholder='Enter Password' />
+                    </div>
+                    <div style={{ display: openerror , textAlign:'center', padding:"5px 5px 5px 5px"}}>
+                       <p style={{ color:"red"}}> email or password is incorrect </p>
                     </div>
                     <div style={{ padding:"5px 5px 5px 5px", marginTop:"10px"}}>
                         <button type='submit' id='signup-form-btn'> Login </button>
