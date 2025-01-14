@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter , Routes , Route } from 'react-router-dom';
-import Navbar from './componants/Navbar/Navbar.jsx';
+// import Navbar from './componants/Navbar/Navbar.jsx';
 import Home_hero from './componants/Home_Hero/Home_hero.jsx';
 import Home_Hero_2 from './componants/Home_Hero/Home_Hero_2.jsx';
 import Signup from './componants/signup/Signup.jsx';
@@ -16,7 +16,6 @@ function App() {
 <GlobleProvider>
     <BrowserRouter>
 
-        <Navbar />
         <Routes>
           <Route path='/'  element={ <Home_hero/> } />
         </Routes>
