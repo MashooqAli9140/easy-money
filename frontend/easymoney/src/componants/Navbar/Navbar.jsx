@@ -9,6 +9,7 @@ import { useGlobleContext } from '../../componants/GlobleContext/GlobleContext';
 const Navbar = () => {
       const [ openmenu , setopenmenu ] = useState(false);
       const { login , setLogin } = useGlobleContext();
+      
   return (
     <div>
       
@@ -27,8 +28,9 @@ const Navbar = () => {
       </div>
 
       <div id='navright' style={{ display: login ? "none":"flex" }} >
-          <button id='login-btn'> Login </button>
-          <button id='signup-btn' > SignUp </button>
+        <a href="/signup"> <button id='login-btn'> Login </button> </a>
+        <a href="/signup"> <button id='signup-btn' > SignUp </button> </a>
+
         <div id='nav-right-menu'>
          <i class="fa-solid fa-bars fa-2x" onClick={ () => setopenmenu( !openmenu ) } style={{  display: openmenu ? "none" : "block" , color:"white"}}> </i>
          <i class="fa-solid fa-x fa-2x" onClick={ () => setopenmenu( !openmenu ) } style={{ display: openmenu ? "block" : "none" , color:"white"}} ></i>
