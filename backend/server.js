@@ -8,6 +8,7 @@ const connectDB = require('./config/db.js');
 const signup_data = require('./model/signup_data.js')
 const Bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const JWT_SECRET = process.env.JWT_SECRET
 
 
 //DATABCE CONNECTED
@@ -62,15 +63,27 @@ app.post('/user-login-req', async( req , res ) => {
     const { email , password } = req.body;
     if( !email , !password ) return res.status(401),json( {'msge':'email or password is missing'});
 
-    //check if email is registered or not
-    const FoundEmail =  await signup_data.findOne({ email });
-    if( !FoundEmail ) return res.status(404).json({'msge':'email not registered'});
-
-    //now check if PW is correct or not and check with bcrypt
-    const MatchedPW = await Bcrypt.compare({ password: FoundEmail.password  });
-    if( !MatchedPW ) return res.status(401).json( {'msge':'password not matched' })
-
-    //now email and password is matched then assign jwt token to new login req
+    try {
+     //check if email is registered or not
+     const FoundUser =  await signup_data.findOne({ email });
+     if( !FoundUser ) return res.status(404).json({'msge':'email not registered'});
+ 
+     //now check if PW is correct or not and check with bcrypt
+     const MatchedPW = await Bcrypt.compare({ password: FoundUser.password  });
+     if( !MatchedPW ) return res.status(401).json( {'msge':'password not matched' })
+ 
+     //now email and password is matched then assign jwt token to new login req
+     const token = jwt.sign(
+         { id: FoundUser._id , email:FoundUser.email },
+         JWT_SECRET,
+         { expiresIn: "1h"}
+     )
+     return res.status(200).json({ 'msge': 'login req success', userDetails: FoundUser , token: token })
+        
+    } catch (error) {
+      console.log(error)
+      return res.status(401).json({'msge':'error while login from server', error })
+    }
 
 }) 
 
