@@ -1,0 +1,9 @@
+#dashboard-hero{
+    background-color: black;
+    padding: 40px 60px 40px 60px;
+}
+#dashboard-hero-content{
+    background-color: rgb(125, 125, 125);
+    padding: 60px 60px 60px 60px;
+    color: white;
+}
