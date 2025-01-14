@@ -88,6 +88,22 @@ app.post('/user-login-req', async( req , res ) => {
 }) 
 
 
+app.get("/get-user-data/:id", async ( req , res ) => {
+    const { id } = req.params;
+    if( !id ) return res.status(404).json({"msge":"id is missing"});
+
+    //if id is ok then return userdata
+    try {
+        const userdata = await signup_data.findOne( { _id : id})
+        if( !userdata ) return res.status(401).json({"msge":"id is mismatch or data is not loading"});
+        return res.status(200).json( {"msge" :"user data access done", userdata: userdata } )
+
+    } catch (error) {
+        return res.status(401).json({"msge":"error while getting user data" , error })
+    }
+})
+
+
 
 
 const PORT = process.env.PORT || 4500;
