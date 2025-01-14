@@ -77,10 +77,10 @@ const Signup_page = () => {
             headers:{ 'Content-type' : 'application/json'},
          })
          alert("login success");
+         navigate(`/dashboard/${response.data.userDetails._id}`)
          setEmail("")
          setPassword("")
          setOpenError('none');
-         navigate("/dashboard")
          return response.status
     } catch (error) {
         alert("error while login");
