@@ -37,6 +37,9 @@ const Signup_page = () => {
                    headers:{ "Content-type": "application/json" },
                 } )
             alert("signup success");
+            setopenLogin("block");
+            setopensignup("none");
+            setName("") , setEmail("") , setPassword(""), setMobile_num("");
             return response.status; 
            } catch (error) {
               console.log("error while creating accoung" , error.msge );
