@@ -1,6 +1,6 @@
 #dashboard-hero{
-    background: rgb(0,51,102);
-    background: linear-gradient(159deg, rgba(0,51,102,1) 0%, rgba(15,82,186,1) 100%);
+    background: rgb(20, 20, 20);
+    /* background: linear-gradient(159deg, rgba(0,51,102,1) 0%, rgba(15,82,186,1) 100%); */
     padding: 40px 10px 40px 10px;
     color: white;
 }
@@ -10,13 +10,17 @@
     justify-content: center;
     align-items: center;
     align-content: center;
+
 }
 #dashboard-hero-header{
-    /* background-color: rgb(75, 75, 75); */
-    padding: 10px 10px 10px 10px;
+    background-color: rgb(75, 75, 75);
+    padding: 20px 20px 20px 20px;
     color:white;
     max-width: 1200px;
     margin: 0 auto 0;
+    margin-bottom: 40px;
+    border-radius: 25px;
+    background-color: #212426;
 }
 #dashboard-hero-left{
     /* background-color: antiquewhite; */
@@ -27,16 +31,55 @@
     color: white;
     padding: 10px 14px 10px 14px;
     outline: none;
-    background: rgb(0,84,180);
-    background: linear-gradient(159deg, rgba(0,84,180,1) 0%, rgba(64,224,208,1) 100%);
+    background: #18CB96;
+    /* background: linear-gradient(159deg, rgba(0,84,180,1) 0%, rgba(64,224,208,1) 100%); */
     border: none;
     border-radius: 25px;
     font-size: 16px;
+    width: 100%;
+    cursor: pointer;
 }
+#continue-btn:hover{
+    color: white;
+    font-weight: 600;
+    padding: 10px 14px 10px 14px;
+    outline: none;
+    background: #00B852;
+    transform: scale(0.98);
+    transition: 0.1s ease-in-out;
+}
+#portfolio-header{
+    background-color: #212426;
+    margin: 0 auto 0;
+    text-align: left;
+    padding: 20px 20px 20px 20px;
+    border-radius: 25px;
+    max-width: 1200px;
+
+}
+#portfolio-h2{
+    background-color: #212426;
+    margin: 0 auto 0;
+    margin-top:10px;
+    text-align: left;
+    padding: 20px 20px 20px 20px;
+    border-radius: 25px;
+    max-width: 1200px;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    align-items: center;
+    align-content: center;
+}
+
+
 
 @media screen and (max-width:800px) {
     #hero-card-box{
         /* background-color: aqua; */
         display: block;
+    }
+    #portfolio-h2{
+      flex-wrap: wrap;
     }
 }

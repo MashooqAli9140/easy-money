@@ -16,6 +16,7 @@ const Dashboard = () => {
 
       <div id="dashboard-hero-header">
            <h1> hello User nice to meet you! </h1>
+           <br />
           <p>
             Welcome aboard. Start investing or upload your external wealth to
             get started.
@@ -56,8 +57,8 @@ const Dashboard = () => {
         </div>
       </div>
 
-<Portfolio />
-      
+      <div style= {{height: '1px' , backgroundColor: 'grey', opacity: '0.5', margin: '30px auto 30px', maxWidth:"1200px"}} ></div><Portfolio />
+    
     </div>
   );
 };
