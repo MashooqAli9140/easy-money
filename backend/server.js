@@ -70,7 +70,7 @@ app.post('/user-login-req', async( req , res ) => {
  
      //now check if PW is correct or not and check with bcrypt
      const MatchedPW = await Bcrypt.compare( password , FoundUser.password);
-     if( !MatchedPW ) return res.status(401).json( {'msge':'password not matched' })
+     if( !MatchedPW ) return res.status(404).json( {'msge':'password not matched' })
  
      //now email and password is matched then assign jwt token to new login req
      const token = jwt.sign(
