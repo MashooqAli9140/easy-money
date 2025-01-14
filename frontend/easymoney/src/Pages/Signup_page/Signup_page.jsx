@@ -34,7 +34,7 @@ const Signup_page = () => {
            }
            try {
                 const response  = await axios.post('http://localhost:3000/user-signup-data', user_data,{
-                   headers:{},
+                   headers:{ "Content-type": "application/json" },
                 } )
             alert("signup success");
             return response.status; 
