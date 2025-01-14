@@ -1,7 +1,10 @@
 import React from 'react'
 import './Dashboard.css';
+import { useGlobleContext } from "../../componants/GlobleContext/GlobleContext";
+
 
 const Portfolio = () => {
+  
   return (
     <div style={ {padding:"10px 10px 10px 10px"}}>
      <div id='portfolio-header'>
