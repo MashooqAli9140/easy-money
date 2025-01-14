@@ -7,7 +7,7 @@ const mongoose = require('mongoose');
 const connectDB = require('./config/db.js');
 const signup_data = require('./model/signup_data.js')
 const Bcrypt = require('bcrypt');
-
+const jwt = require('jsonwebtoken');
 
 
 //DATABCE CONNECTED
@@ -56,6 +56,23 @@ app.post("/user-signup-data", async( req , res ) => {
         return res.status(400).json({ "msge":"error while saving the data"});
     }
 })
+
+//Handle login req
+app.post('/user-login-req', async( req , res ) => {
+    const { email , password } = req.body;
+    if( !email , !password ) return res.status(401),json( {'msge':'email or password is missing'});
+
+    //check if email is registered or not
+    const FoundEmail =  await signup_data.findOne({ email });
+    if( !FoundEmail ) return res.status(404).json({'msge':'email not registered'});
+
+    //now check if PW is correct or not and check with bcrypt
+    const MatchedPW = await Bcrypt.compare({ password: FoundEmail.password  });
+    if( !MatchedPW ) return res.status(401).json( {'msge':'password not matched' })
+
+    //now email and password is matched then assign jwt token to new login req
+
+}) 
 
 
 
