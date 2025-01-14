@@ -15,7 +15,7 @@ const Signup_page = () => {
     const [ mobile_num , setMobile_num ] = useState("");
     const [ openerror , setOpenError ] = useState("none");
     const navigate = useNavigate();
-    const { login , setLogin } = useGlobleContext();
+    const { login , setLogin, login_user , setlogin_user  } = useGlobleContext();
 
     function openloginform(e){
         e.preventDefault();
@@ -79,6 +79,7 @@ const Signup_page = () => {
          })
          alert("login success");
          setLogin(true);
+         setlogin_user(response.data.userDetails);
          navigate(`/dashboard/${response.data.userDetails._id}`)
          setEmail("")
          setPassword("")
