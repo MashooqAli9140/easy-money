@@ -24,6 +24,7 @@ const Signup_page = () => {
         setopensignup("block");
     } 
 
+//SIGN UP REQ FUNCTION
     async function SendUserSignup(e){
            e.preventDefault();
            const user_data = {
@@ -32,6 +33,8 @@ const Signup_page = () => {
             password,
             mobile_num
            }
+ 
+
            try {
                 const response  = await axios.post('http://localhost:3000/user-signup-data', user_data,{
                    headers:{ "Content-type": "application/json" },
@@ -46,6 +49,29 @@ const Signup_page = () => {
               alert("error while sending");
            }
     }
+
+ //LOGIN REQ FUNCTION CREATED
+ async function SendLoginReq(e){
+    e.preventDefault();
+    
+    const user_data = {
+        email,
+        password
+    }
+
+    if( !email || !password ) return alert("please fill all the details");
+
+    try {
+         const response = await axios.post('http://localhost:3000/user-login-req' , user_data , {
+            headers:{ 'Content-type' : 'application/json'},
+         })
+         alert("login success");
+         return response.status
+    } catch (error) {
+        alert("error while login");
+        console.log(error.msge);
+    }
+ } 
 
 
 
@@ -100,7 +126,7 @@ const Signup_page = () => {
             </div>
             {/* //signup or login form inputs */}
             <div id='form-inputs'>
-                <form>
+                <form onSubmit={ (e) => SendLoginReq(e) }>
                     <div style={{ padding:"5px 5px 5px 5px"}}>
                        <input id='name-input' type="text" placeholder='Enter Email' />
                     </div>
@@ -108,8 +134,9 @@ const Signup_page = () => {
                        <input id='name-input' type="text" placeholder='Enter Password' />
                     </div>
                     <div style={{ padding:"5px 5px 5px 5px", marginTop:"10px"}}>
-                        <button id='signup-form-btn'> Login </button>
+                        <button type='submit' id='signup-form-btn'> Login </button>
                     </div>
+                </form>
                     <div style={{ padding:"5px 5px 5px 5px", marginTop:"10px"}}>
                         <div style={{ fontWeight:"100", display:'flex',flexGrow:"grow", justifyContent:"center", gap:"5px"}}>
                             <p>Don't have an account?</p>
@@ -121,7 +148,7 @@ const Signup_page = () => {
                             <button style={{ cursor:"pointer", background:'none', border:'none',outline:'none',fontSize:"18px",color:"blue"}}> Reset </button>
                         </div>
                     </div>
-                </form>
+               
             </div>
         </div>
 
