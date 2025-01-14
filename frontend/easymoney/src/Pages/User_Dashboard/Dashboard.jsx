@@ -2,6 +2,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { useGlobleContext } from "../../componants/GlobleContext/GlobleContext";
 import "./Dashboard.css";
+import Portfolio from "./Portfolio";
 
 const Dashboard = () => {
   const { id } = useParams();
@@ -52,11 +53,10 @@ const Dashboard = () => {
         </div>
       </div>
         {/* //right part */}
-
         </div>
       </div>
 
-
+<Portfolio />
       
     </div>
   );
