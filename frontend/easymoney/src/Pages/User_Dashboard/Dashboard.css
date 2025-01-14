@@ -1,9 +1,42 @@
 #dashboard-hero{
-    background-color: black;
-    padding: 40px 60px 40px 60px;
-}
-#dashboard-hero-content{
-    background-color: rgb(125, 125, 125);
-    padding: 60px 60px 60px 60px;
+    background: rgb(0,51,102);
+    background: linear-gradient(159deg, rgba(0,51,102,1) 0%, rgba(15,82,186,1) 100%);
+    padding: 40px 10px 40px 10px;
     color: white;
+}
+#hero-card-box{
+    /* background-color: aqua; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+#dashboard-hero-header{
+    /* background-color: rgb(75, 75, 75); */
+    padding: 10px 10px 10px 10px;
+    color:white;
+    max-width: 1200px;
+    margin: 0 auto 0;
+}
+#dashboard-hero-left{
+    /* background-color: antiquewhite; */
+    padding: 10px 10px 10px 10px;
+}
+#continue-btn{
+    background: none;
+    color: white;
+    padding: 10px 14px 10px 14px;
+    outline: none;
+    background: rgb(0,84,180);
+    background: linear-gradient(159deg, rgba(0,84,180,1) 0%, rgba(64,224,208,1) 100%);
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+}
+
+@media screen and (max-width:800px) {
+    #hero-card-box{
+        /* background-color: aqua; */
+        display: block;
+    }
 }
