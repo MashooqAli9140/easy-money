@@ -5,7 +5,8 @@ import { useParams } from 'react-router-dom';
 const GlobleContext = createContext();
 
 export const GlobleProvider = ( {children} ) => {
-       const[ login , setLogin ] = useState(false);
+       const [ login , setLogin ] = useState(false);
+       const [ login_user , setlogin_user ] = useState({})
        
     return(
         <GlobleContext.Provider value={{ login , setLogin }}>
