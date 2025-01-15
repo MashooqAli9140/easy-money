@@ -70,7 +70,8 @@ const Mutual_fund = () => {
             sip_amount,
             sip_date
           }
-          if( !selectedFundName || !selectedNav || !selectedScheme  || !sip_amount || !sip_date ) return alert("please fill details")
+          if( !id ) return alert("user id not get");
+          if( !selectedFundName || !selectedNav || !selectedScheme  || !sip_amount || !sip_date) return alert("please fill details")
           if( sip_amount < 500 || sip_amount > 100000  ) return alert("please enter sip from 500 to 100k")
           if( sip_date < 1 || sip_date > 30  ) return alert("please select date from 1 to 30")
 
@@ -78,9 +79,12 @@ const Mutual_fund = () => {
               const response  = await axios.post("http://localhost:3000/new-sip-req",sipdata,{
                 headers:{ 'Content-type' : 'application/json'}
               })
+              alert("data saved success");
+              setshowInvestCard(false),setSipAmount(""),setselectedFundName(""),setselectedScheme(""),setselectednav(""),setSipDate("")
               return response.status;
             } catch (error) {
               console.log( error.message ,"error while send new SIP");
+              alert("please check frontend code");
             }
     }
 
