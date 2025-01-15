@@ -16,8 +16,9 @@ const Mutual_fund = () => {
       const [selectedScheme , setselectedScheme ] = useState("");
       const [selectedNav , setselectednav ] = useState("");
       const mutualFundIds = [ '148382','148459','148702','114984','148662']
-
-
+      const [ sip_amount , setSipAmount ] = useState("");
+      const [ sip_date ,   setSipDate ] = useState("");
+    
       useEffect(() => {
         const fetchMutualFundData = async () => {
           try {
@@ -58,6 +59,30 @@ const Mutual_fund = () => {
           <h1> loading... </h1>
       </div>
     )
+
+    async function MakeNewSip(e){
+          e.preventDefault();
+          const sipdata = {
+            id,
+            selectedFundName,
+            selectedScheme,
+            selectedNav,
+            sip_amount,
+            sip_date
+          }
+          if( !selectedFundName || !selectedNav || !selectedScheme  || !sip_amount || !sip_date ) return alert("please fill details")
+          if( sip_amount < 500 || sip_amount > 100000  ) return alert("please enter sip from 500 to 100k")
+          if( sip_date < 1 || sip_date > 30  ) return alert("please select date from 1 to 30")
+
+            try {
+              const response  = await axios.post("http://localhost:3000/new-sip-req",sipdata,{
+                headers:{ 'Content-type' : 'application/json'}
+              })
+              return response.status;
+            } catch (error) {
+              console.log( error.message ,"error while send new SIP");
+            }
+    }
 
 
 
@@ -153,11 +178,11 @@ const Mutual_fund = () => {
 {/* //SIP FORM START */}
         <div id='sip-form' style={{ display: isSIPformActive ? "block" : "none"}}>
             <div style={{ width:"100%",textAlign:"center",display:"inline-block", padding:'10px 10px 10px 10px', borderRadius:"12px"}}> 
-                <input style={{ margin:"10px 10px 10px 10px", borderRadius:"5px", padding:"10px 5px 10px 5px", border:'2px solid #212426',outline:"none"}} type="number" placeholder='ENTER SIP AMOUNT' />
-                <input style={{ margin:"10px 10px 10px 10px",  border:'2px solid #212426', borderRadius:"5px", padding:"10px 5px 10px 5px",outline:"none"}} type="number" placeholder='ENTER DATE' />
+                <input onChange={ (e) => setSipAmount(e.target.value) } style={{ margin:"10px 10px 10px 10px", borderRadius:"5px", padding:"10px 5px 10px 5px", border:'2px solid #212426',outline:"none"}} type="number" placeholder='SIP AMOUNT (500-100K) ' />
+                <input onChange={ (e) => setSipDate(e.target.value) } style={{ margin:"10px 10px 10px 10px",  border:'2px solid #212426', borderRadius:"5px", padding:"10px 5px 10px 5px",outline:"none"}} type="number" placeholder='ENTER DATE (1-30)' />
             </div>
             <div style={{ padding:"10px 0px 10px 0px",  width:"100%"}} > 
-                  <button style={{width:"100%"}} id='mutual-fund-invest-btn'> Start SIP </button>
+                  <button onClick={ (e) => MakeNewSip(e) } style={{width:"100%"}} id='mutual-fund-invest-btn'> Start SIP </button>
             </div>
             <div style={{ padding:"10px 0px 10px 0px",  width:"100%"}} > 
                   <button onClick={ (e) => CloseInvestCard(e) } style={{width:"100%"}} id='mutual-fund-cancel-btn'> Cancel </button>
