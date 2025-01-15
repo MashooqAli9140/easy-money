@@ -10,6 +10,7 @@ const Mutual_fund = () => {
       const [isLoading, setIsLoading] = useState(true);
       const [ fundData , setfundData ] = useState([]);
       const [error, setError] = useState(null);
+      const [ showInvestCard , setshowInvestCard ] = useState(false)
       
       const mutualFundIds = [ '148382','148459','148702','114984','148662']
       useEffect(() => {
@@ -43,6 +44,7 @@ const Mutual_fund = () => {
 
       async function startInvesting( e , fund_id ){
         e.preventDefault();
+        setshowInvestCard(true);
 
       }
       
@@ -103,6 +105,53 @@ const Mutual_fund = () => {
         </div>
        <div>
     </div>
+</div>
+
+
+
+
+
+
+<div id='invest-card-outer' style={{ display: showInvestCard ? "block" : "none"}}>
+      <div id='invest-card-inner' >
+          <div style={{ display:'flex', justifyContent:'space-evenly', gap:"5px", alignContent:'center',alignItems:'center', padding:'10px 10px 10px 10px', borderRadius:"12px", backgroundColor:"#212426"}} > 
+            <button id='invest-sip-btn'> SIP </button>
+            <button id='invest-onetime-btn'> One Time </button>
+          </div>
+        
+        <div id='invest-card-fund-details'>
+        <div id='mutual-funds-main-content'>
+              <div style={{ padding:"10px 0px 10px 0px", fontWeight:"100",width:"100%"}}>
+              <h5> Fund Name </h5>  
+              <h3> RANDOME </h3> 
+              </div>
+
+              <div style={{ padding:"10px 0px 10px 0px", width:"100%"}} >
+              <h5> Scheme category </h5>
+              <h3> RANDOME </h3>
+              </div>
+
+              <div style={{ padding:"10px 0px 10px 0px",  width:"100%"}} >
+                  <h5> NAV  </h5>
+                  <h3> RANDOME </h3> 
+                  </div>
+        </div>
+        </div>
+
+        <div id='sip-form'>
+            <div style={{ width:"100%",textAlign:"center",display:"inline-block", padding:'10px 10px 10px 10px', borderRadius:"12px"}}> 
+                <input style={{ margin:"10px 10px 10px 10px", borderRadius:"5px", padding:"10px 5px 10px 5px", border:'2px solid #212426',outline:"none"}} type="number" placeholder='ENTER SIP AMOUNT' />
+                <input style={{ margin:"10px 10px 10px 10px",  border:'2px solid #212426', borderRadius:"5px", padding:"10px 5px 10px 5px",outline:"none"}} type="number" placeholder='ENTER DATE' />
+            </div>
+            <div style={{ padding:"10px 0px 10px 0px",  width:"100%"}} > 
+                  <button style={{width:"100%"}} id='mutual-fund-invest-btn'> Start SIP </button>
+            </div>
+            <div style={{ padding:"10px 0px 10px 0px",  width:"100%"}} > 
+                  <button onClick={ () => setshowInvestCard(false) } style={{width:"100%"}} id='mutual-fund-cancel-btn'> Cancel </button>
+            </div>
+        </div>
+
+      </div>
 </div>
 
     </>
