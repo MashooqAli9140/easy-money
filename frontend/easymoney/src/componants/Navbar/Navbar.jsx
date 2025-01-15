@@ -22,10 +22,10 @@ const Navbar = () => {
       </div>
 
       <div id='nav-mid'>
-            <a href= { id ? `/dashboard/${id}}/mutualFunds`:"/signup" }> Mutual Funds </a>
-            <a href={ id ? `/dashboard/${id}}/stocks`:"/signup" }> Stocks </a>
-            <a href={ id ? `/dashboard/${id}}/NPS`:"/signup" }> NPS </a>
-            <a href={ id ? `/dashboard/${id}}/sip-calculator`:"/signup" }> SIP Calculator </a>
+            <a href= { id ? `/dashboard/mutualfunds/${id}}`:"/signup" }> Mutual Funds </a>
+            <a href={ id ? `/dashboard/stocks/${id}`:"/signup" }> Stocks </a>
+            <a href={ id ? `/dashboard/NPS/${id}`:"/signup" }> NPS </a>
+            <a href={ id ? `/dashboard/sip-calculator/${id}`:"/signup" }> SIP Calculator </a>
       </div>
 
       <div id='navright' style={{ display: id ? "none" : "flex"}} >
