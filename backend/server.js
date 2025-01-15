@@ -130,6 +130,32 @@ app.post("/new-sip-req", async( req , res ) => {
 })
 
 
+//Handle New One time MF req
+app.post("/new-mf-onetime-investment", async( req , res ) => {
+    const { id , oneTimeAmount , selectedFundName , selectedNav , selectedScheme } = req.body;
+    if( !id || !oneTimeAmount || !selectedFundName || !selectedNav || !selectedScheme  ) return res.status(400).json({"msge":"id or amount or something else not get"});
+
+    try {
+    //now data is ok then find user to store new one time data
+    const FoundUser = await signup_data.findById(id);
+    if( !FoundUser ) return res.status(404).json({"msge":"user not found to store sip data"});
+
+    //now user found then add new sip details to user database
+    FoundUser.mf_onetime.push({ 
+        fundName:selectedFundName,
+        FundNav: selectedNav,
+        FundScheme: selectedScheme,
+        invested_amount:oneTimeAmount
+     });
+     await FoundUser.save();
+     return res.status(200).json({"msge":"New mf one time investment success"})
+    } catch (error) {
+      console.log( error.message);
+      return res.status(500).json({ msg: "Internal server error", error: error.message });
+    }
+})
+
+
 
 
 const PORT = process.env.PORT || 4500;

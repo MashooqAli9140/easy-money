@@ -6,7 +6,8 @@ const signup_data = new Schema( {
      email:{ type:String , required:true },
      password:{ type:String , required:true },
      mobile_num:{ type:Number , required: true },
-     sip_fund_Details:[]
+     sip_fund_Details:[],
+     mf_onetime:[]
 },
   { collection:"user-signup-data"}
 )
