@@ -45,7 +45,7 @@ if( !login_user_data)
           </div>
 
             <div style={{ padding:"10px 10px 10px 10px"}}>
-              <a href="/dashboard/mutualfunds/id">
+              <a href={`/dashboard/mutualfunds/${id}`} >
               <button id="continue-btn"> Continue </button>
               </a>
             </div>
@@ -61,7 +61,7 @@ if( !login_user_data)
           </div>
 
             <div style={{ padding:"10px 10px 10px 10px"}}>
-              <a href="/dashboard/mutualfunds/id">
+              <a href={`/dashboard/mutualfunds/${id}`}>
               <button id="continue-btn"> Start SIP  </button>
               </a>
             </div>
