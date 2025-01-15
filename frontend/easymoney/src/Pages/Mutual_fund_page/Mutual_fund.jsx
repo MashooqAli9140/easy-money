@@ -43,8 +43,9 @@ const Mutual_fund = () => {
 
       async function startInvesting( e , fund_id ){
         e.preventDefault();
-        console.log( "index is this-->", fund_id )
+
       }
+      
   return (
     <>
    <Navbar/>
