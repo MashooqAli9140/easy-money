@@ -18,6 +18,7 @@ const Mutual_fund = () => {
       const mutualFundIds = [ '148382','148459','148702','114984','148662']
       const [ sip_amount , setSipAmount ] = useState("");
       const [ sip_date ,   setSipDate ] = useState("");
+      const[ oneTimeAmount , setoneTimeAmount ] = useState("")
     
       useEffect(() => {
         const fetchMutualFundData = async () => {
@@ -38,7 +39,6 @@ const Mutual_fund = () => {
     
         fetchMutualFundData();
       }, []);
-
 
 
     function startInvesting( e ,fund_name , fund_category , fund_NAV ){
@@ -70,10 +70,12 @@ const Mutual_fund = () => {
             sip_amount,
             sip_date
           }
+          
           if( !id ) return alert("user id not get");
           if( !selectedFundName || !selectedNav || !selectedScheme  || !sip_amount || !sip_date) return alert("please fill details")
           if( sip_amount < 500 || sip_amount > 100000  ) return alert("please enter sip from 500 to 100k")
           if( sip_date < 1 || sip_date > 30  ) return alert("please select date from 1 to 30")
+
 
             try {
               const response  = await axios.post("http://localhost:3000/new-sip-req",sipdata,{
@@ -84,6 +86,33 @@ const Mutual_fund = () => {
               return response.status;
             } catch (error) {
               console.log( error.message ,"error while send new SIP");
+              alert("please check frontend code");
+            }
+    }
+
+    async function MakeNewMFOnetime(e){
+          e.preventDefault();
+          const OnetimeData = {
+            id,
+            selectedFundName,
+            selectedNav,
+            selectedScheme,
+            oneTimeAmount
+          }
+
+          if( !id ) return alert("user id not get");
+          if( !oneTimeAmount) return alert("Amount not get");
+          if( oneTimeAmount < 1000 || oneTimeAmount > 100000 ) return alert("please enter amount betwen 1k to 100k");
+
+            try {
+              const response  = await axios.post("http://localhost:3000/new-mf-onetime-investment",OnetimeData,{
+                headers:{ 'Content-type' : 'application/json'}
+              })
+              alert("data saved success");
+              setshowInvestCard(false),setoneTimeAmount("");
+              return response.status;
+            } catch (error) {
+              console.log( error.message ,"error while send new one time investment");
               alert("please check frontend code");
             }
     }
@@ -182,8 +211,8 @@ const Mutual_fund = () => {
 {/* //SIP FORM START */}
         <div id='sip-form' style={{ display: isSIPformActive ? "block" : "none"}}>
             <div style={{ width:"100%",textAlign:"center",display:"inline-block", padding:'10px 10px 10px 10px', borderRadius:"12px"}}> 
-                <input onChange={ (e) => setSipAmount(e.target.value) } style={{ margin:"10px 10px 10px 10px", borderRadius:"5px", padding:"10px 5px 10px 5px", border:'2px solid #212426',outline:"none"}} type="number" placeholder='SIP AMOUNT (500-100K) ' />
-                <input onChange={ (e) => setSipDate(e.target.value) } style={{ margin:"10px 10px 10px 10px",  border:'2px solid #212426', borderRadius:"5px", padding:"10px 5px 10px 5px",outline:"none"}} type="number" placeholder='ENTER DATE (1-30)' />
+                <input value={sip_amount} onChange={ (e) => setSipAmount(e.target.value) } style={{ margin:"10px 10px 10px 10px", borderRadius:"5px", padding:"10px 5px 10px 5px", border:'2px solid #212426',outline:"none"}} type="number" placeholder='SIP AMOUNT (500-100K) ' />
+                <input value={sip_date}  onChange={ (e) => setSipDate(e.target.value) } style={{ margin:"10px 10px 10px 10px",  border:'2px solid #212426', borderRadius:"5px", padding:"10px 5px 10px 5px",outline:"none"}} type="number" placeholder='ENTER DATE (1-30)' />
             </div>
             <div style={{ padding:"10px 0px 10px 0px",  width:"100%"}} > 
                   <button onClick={ (e) => MakeNewSip(e) } style={{width:"100%"}} id='mutual-fund-invest-btn'> Start SIP </button>
@@ -196,11 +225,11 @@ const Mutual_fund = () => {
 {/* //ONE TIME INVESTMENT FORM START */}
         <div id='sip-form' style={{ display: !isSIPformActive ? "block" : "none"}}>
             <div style={{ width:"100%",textAlign:"center",display:"inline-block", padding:'10px 10px 10px 10px', borderRadius:"12px"}}> 
-                <input style={{ margin:"10px 10px 10px 10px", borderRadius:"5px", padding:"10px 5px 10px 5px", border:'2px solid #212426',outline:"none"}} type="number" placeholder='ENTER AMOUNT' />
+                <input value={oneTimeAmount} onChange={ (e) => setoneTimeAmount(e.target.value)} style={{ margin:"10px 10px 10px 10px", borderRadius:"5px", padding:"10px 5px 10px 5px", border:'2px solid #212426',outline:"none"}} type="number" placeholder='ENTER AMOUNT(1k-10k)' />
 
             </div>
             <div style={{ padding:"10px 0px 10px 0px",  width:"100%"}} > 
-                  <button style={{width:"100%"}} id='mutual-fund-invest-btn'> Make One Time </button>
+                  <button onClick={ (e) => MakeNewMFOnetime(e)} style={{width:"100%"}} id='mutual-fund-invest-btn'> Make One Time </button>
             </div>
             <div style={{ padding:"10px 0px 10px 0px",  width:"100%"}} > 
                   <button onClick={ (e) => CloseInvestCard(e) } style={{width:"100%"}} id='mutual-fund-cancel-btn'> Cancel </button>
