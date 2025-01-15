@@ -12,8 +12,12 @@ const Mutual_fund = () => {
       const [error, setError] = useState(null);
       const [ showInvestCard , setshowInvestCard ] = useState(false)
       const [ isSIPformActive , setisSIPformActive ] = useState(true);
-      
+      const [selectedFundName , setselectedFundName ] = useState("");
+      const [selectedScheme , setselectedScheme ] = useState("");
+      const [selectedNav , setselectednav ] = useState("");
       const mutualFundIds = [ '148382','148459','148702','114984','148662']
+
+
       useEffect(() => {
         const fetchMutualFundData = async () => {
           try {
@@ -34,21 +38,31 @@ const Mutual_fund = () => {
         fetchMutualFundData();
       }, []);
 
-      if( fundData ) console.log("final data-->", fundData )
-
-      if( isLoading ) return(
-        <div style={{ textAlign:"center",color:"white", maxWidth:"300px", backgroundColor:"green", borderRadius:"50px",margin:"20px auto 20px"}}>
-            <h1> loading... </h1>
-        </div>
-      )
 
 
-      async function startInvesting( e , fund_id ){
+    function startInvesting( e ,fund_name , fund_category , fund_NAV ){
         e.preventDefault();
+        setselectedFundName(fund_name);
+        setselectedScheme(fund_category);
+        setselectednav(fund_NAV)
         setshowInvestCard(true);
-
       }
-      
+
+     function CloseInvestCard(e){
+      e.preventDefault();
+      setselectedFundName(""), setselectedScheme(""),setselectednav(""), setshowInvestCard(false);
+     }
+
+     if( isLoading ) return(
+      <div style={{ textAlign:"center",color:"white", maxWidth:"300px", backgroundColor:"green", borderRadius:"50px",margin:"20px auto 20px"}}>
+          <h1> loading... </h1>
+      </div>
+    )
+
+
+
+
+
   return (
     <>
    <Navbar/>
@@ -96,7 +110,7 @@ const Mutual_fund = () => {
 
               <div style={{ padding:"10px 0px 10px 0px",  width:"100%"}} > 
                   <a href=""> 
-                  <button onClick={ (e) => startInvesting( e , data.meta.scheme_code )} id='mutual-fund-invest-btn'> Invest Now </button>
+                  <button onClick={ (e) => startInvesting( e , data.meta.fund_house,data.meta.scheme_category,data.data[0].nav  )} id='mutual-fund-invest-btn'> Invest Now </button>
                   </a>
               </div>
         </div>
@@ -109,10 +123,7 @@ const Mutual_fund = () => {
 </div>
 
 
-
-
-
-
+{/* //INVESTCARD STARTS HERE// */}
 <div id='invest-card-outer' style={{ display: showInvestCard ? "block" : "none"}}>
       <div id='invest-card-inner' >
           <div style={{ display:'flex', justifyContent:'space-evenly', gap:"5px", alignContent:'center',alignItems:'center', padding:'10px 10px 10px 10px', borderRadius:"12px", backgroundColor:"#212426"}} > 
@@ -124,17 +135,17 @@ const Mutual_fund = () => {
         <div id='mutual-funds-main-content'>
               <div style={{ padding:"10px 0px 10px 0px", fontWeight:"100",width:"100%"}}>
               <h5> Fund Name </h5>  
-              <h3> RANDOME </h3> 
+              <h3> {selectedFundName} </h3> 
               </div>
 
               <div style={{ padding:"10px 0px 10px 0px", width:"100%"}} >
               <h5> Scheme category </h5>
-              <h3> RANDOME </h3>
+              <h3> {selectedScheme} </h3>
               </div>
 
               <div style={{ padding:"10px 0px 10px 0px",  width:"100%"}} >
                   <h5> NAV  </h5>
-                  <h3> RANDOME </h3> 
+                  <h3> { selectedNav } </h3> 
                   </div>
         </div>
         </div>
@@ -149,7 +160,7 @@ const Mutual_fund = () => {
                   <button style={{width:"100%"}} id='mutual-fund-invest-btn'> Start SIP </button>
             </div>
             <div style={{ padding:"10px 0px 10px 0px",  width:"100%"}} > 
-                  <button onClick={ () => setshowInvestCard(false) } style={{width:"100%"}} id='mutual-fund-cancel-btn'> Cancel </button>
+                  <button onClick={ (e) => CloseInvestCard(e) } style={{width:"100%"}} id='mutual-fund-cancel-btn'> Cancel </button>
             </div>
         </div>{/* //SIP FORM END */}
 
@@ -163,13 +174,15 @@ const Mutual_fund = () => {
                   <button style={{width:"100%"}} id='mutual-fund-invest-btn'> Make One Time </button>
             </div>
             <div style={{ padding:"10px 0px 10px 0px",  width:"100%"}} > 
-                  <button onClick={ () => setshowInvestCard(false) } style={{width:"100%"}} id='mutual-fund-cancel-btn'> Cancel </button>
+                  <button onClick={ (e) => CloseInvestCard(e) } style={{width:"100%"}} id='mutual-fund-cancel-btn'> Cancel </button>
             </div>
         </div>{/* //SIP FORM END */}
 
 
       </div>
+
 </div>
+
 
     </>
 
