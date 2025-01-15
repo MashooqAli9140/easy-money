@@ -44,7 +44,8 @@ if( !login_user_data)
             <p> Invest in the right funds that's personalised for you </p>
           </div>
 
-            <div style={{ padding:"10px 10px 10px 10px"}}><a href="">
+            <div style={{ padding:"10px 10px 10px 10px"}}>
+              <a href="/dashboard/mutualfunds/id">
               <button id="continue-btn"> Continue </button>
               </a>
             </div>
@@ -59,7 +60,8 @@ if( !login_user_data)
             <p> Invest in the right funds that's personalised for you </p>
           </div>
 
-            <div style={{ padding:"10px 10px 10px 10px"}}><a href="">
+            <div style={{ padding:"10px 10px 10px 10px"}}>
+              <a href="/dashboard/mutualfunds/id">
               <button id="continue-btn"> Start SIP  </button>
               </a>
             </div>
