@@ -1,0 +1,94 @@
+#mutual-fund-header{
+    background-color: rgb(255, 255, 255);
+    padding: 10px 20px 10px 20px;
+    box-shadow: 1px 4px 5px rgba(0,0,0,0.2);
+}
+#mutual-fund-01{
+    /* background-color: bisque; */
+    padding: 10px 5px 10px 5px;
+    max-width: 1200px;
+    margin: 0 auto 0;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    align-content: center;
+}
+#mutual-fund-hero{
+    /* background-color: rgb(146, 146, 146); */
+    padding: 10px 20px 10px 20px;
+}
+#mutual-fund-02{
+    background-color: rgb(255, 255, 255);
+    border-radius: 12px;
+    padding: 20px 15px 20px 15px;
+    max-width: 1200px;
+    margin: 0 auto 0;
+    /* display: flex;
+    gap: 10px;
+    align-items: center;
+    align-content: center; */
+    box-shadow: 0px 7px 10px rgba(0,0,0,0.2);
+}
+#mutual-funds-details-head{
+    background-color: #212426;
+    border-radius: 12px;
+    padding: 20px 15px 20px 15px;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    color: white;
+}
+#mutual-funds-main-content{
+    background-color: #fefefe;
+    background-image: linear-gradient(315deg, #fefefe 0%, #00a4e4 74%);
+    border-radius: 12px;
+    padding: 20px 15px 20px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+    margin-top: 20px;
+    color: white;
+    box-shadow: 0px 4px 3px rgba(0,0,0,0.2);
+}
+#mutual-fund-h6-words{
+    margin-bottom: 4px;
+    color: rgb(255, 255, 255);
+    display: none;
+    font-weight: 100;
+    font-size: 12px;
+}
+#mutual-fund-invest-btn{
+    background: white;
+    border: none;
+    border-radius: 12px;
+    padding: 12px 15px 12px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 1px 2px 10px rgba(0,0,0,0.4);
+    color: #212426;
+}
+#mutual-fund-invest-btn:hover{
+   background: #EDFDFE;
+   font-weight: 600;
+   transform: scale(0.92);
+   transition: 0.1s;
+   color: #01B751;
+}
+
+/* //responsiveness */
+@media screen and ( max-width:800px) {
+    #mutual-funds-details-head{
+        display: none;
+    }
+
+    #mutual-funds-main-content{
+       display: block;
+    }
+    #mutual-fund-h6-words{
+        display: block;
+    }
+    #mutual-fund-invest-btn{
+     width:100%;
+    }
+}
