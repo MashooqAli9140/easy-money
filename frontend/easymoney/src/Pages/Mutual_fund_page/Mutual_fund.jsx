@@ -11,6 +11,7 @@ const Mutual_fund = () => {
       const [ fundData , setfundData ] = useState([]);
       const [error, setError] = useState(null);
       const [ showInvestCard , setshowInvestCard ] = useState(false)
+      const [ isSIPformActive , setisSIPformActive ] = useState(true);
       
       const mutualFundIds = [ '148382','148459','148702','114984','148662']
       useEffect(() => {
@@ -115,8 +116,8 @@ const Mutual_fund = () => {
 <div id='invest-card-outer' style={{ display: showInvestCard ? "block" : "none"}}>
       <div id='invest-card-inner' >
           <div style={{ display:'flex', justifyContent:'space-evenly', gap:"5px", alignContent:'center',alignItems:'center', padding:'10px 10px 10px 10px', borderRadius:"12px", backgroundColor:"#212426"}} > 
-            <button id='invest-sip-btn'> SIP </button>
-            <button id='invest-onetime-btn'> One Time </button>
+            <button onClick={ () => setisSIPformActive(true) } id='invest-sip-btn' style={{ background: isSIPformActive ? "#00B752" : "none" }}> SIP </button>
+            <button onClick={ () => setisSIPformActive(false) } id='invest-onetime-btn' style={{ background: !isSIPformActive ? "#00B752" : "none" }} > One Time </button>
           </div>
         
         <div id='invest-card-fund-details'>
@@ -138,7 +139,8 @@ const Mutual_fund = () => {
         </div>
         </div>
 
-        <div id='sip-form'>
+{/* //SIP FORM START */}
+        <div id='sip-form' style={{ display: isSIPformActive ? "block" : "none"}}>
             <div style={{ width:"100%",textAlign:"center",display:"inline-block", padding:'10px 10px 10px 10px', borderRadius:"12px"}}> 
                 <input style={{ margin:"10px 10px 10px 10px", borderRadius:"5px", padding:"10px 5px 10px 5px", border:'2px solid #212426',outline:"none"}} type="number" placeholder='ENTER SIP AMOUNT' />
                 <input style={{ margin:"10px 10px 10px 10px",  border:'2px solid #212426', borderRadius:"5px", padding:"10px 5px 10px 5px",outline:"none"}} type="number" placeholder='ENTER DATE' />
@@ -149,7 +151,22 @@ const Mutual_fund = () => {
             <div style={{ padding:"10px 0px 10px 0px",  width:"100%"}} > 
                   <button onClick={ () => setshowInvestCard(false) } style={{width:"100%"}} id='mutual-fund-cancel-btn'> Cancel </button>
             </div>
-        </div>
+        </div>{/* //SIP FORM END */}
+
+{/* //SIP FORM START */}
+        <div id='sip-form' style={{ display: !isSIPformActive ? "block" : "none"}}>
+            <div style={{ width:"100%",textAlign:"center",display:"inline-block", padding:'10px 10px 10px 10px', borderRadius:"12px"}}> 
+                <input style={{ margin:"10px 10px 10px 10px", borderRadius:"5px", padding:"10px 5px 10px 5px", border:'2px solid #212426',outline:"none"}} type="number" placeholder='ENTER AMOUNT' />
+
+            </div>
+            <div style={{ padding:"10px 0px 10px 0px",  width:"100%"}} > 
+                  <button style={{width:"100%"}} id='mutual-fund-invest-btn'> Make One Time </button>
+            </div>
+            <div style={{ padding:"10px 0px 10px 0px",  width:"100%"}} > 
+                  <button onClick={ () => setshowInvestCard(false) } style={{width:"100%"}} id='mutual-fund-cancel-btn'> Cancel </button>
+            </div>
+        </div>{/* //SIP FORM END */}
+
 
       </div>
 </div>
