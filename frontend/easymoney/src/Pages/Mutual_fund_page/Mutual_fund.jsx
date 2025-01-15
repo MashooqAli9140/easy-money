@@ -164,7 +164,7 @@ const Mutual_fund = () => {
             </div>
         </div>{/* //SIP FORM END */}
 
-{/* //SIP FORM START */}
+{/* //ONE TIME INVESTMENT FORM START */}
         <div id='sip-form' style={{ display: !isSIPformActive ? "block" : "none"}}>
             <div style={{ width:"100%",textAlign:"center",display:"inline-block", padding:'10px 10px 10px 10px', borderRadius:"12px"}}> 
                 <input style={{ margin:"10px 10px 10px 10px", borderRadius:"5px", padding:"10px 5px 10px 5px", border:'2px solid #212426',outline:"none"}} type="number" placeholder='ENTER AMOUNT' />
@@ -176,7 +176,7 @@ const Mutual_fund = () => {
             <div style={{ padding:"10px 0px 10px 0px",  width:"100%"}} > 
                   <button onClick={ (e) => CloseInvestCard(e) } style={{width:"100%"}} id='mutual-fund-cancel-btn'> Cancel </button>
             </div>
-        </div>{/* //SIP FORM END */}
+        </div>{/* //ONE TIME INVESTMENT FORM END */}
 
 
       </div>
