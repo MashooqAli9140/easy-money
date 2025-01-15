@@ -103,6 +103,32 @@ app.get("/get-user-data/:id", async ( req , res ) => {
     }
 })
 
+//Handle New sip req
+app.post("/new-sip-req", async( req , res ) => {
+    const { id , selectedFundName , selectedNav , selectedScheme , sip_amount , sip_date } = req.body;
+    if( !id || !selectedFundName || !selectedNav || !selectedScheme  || !sip_amount || !sip_date ) return res.status(400).json({"msge":"some details not coming"});
+
+    try {
+    //now data is ok then find user to store new sip data
+    const FoundUser = await signup_data.findById(id);
+    if( !FoundUser ) return res.status(404).json({"msge":"user not found to store sip data"});
+
+    //now user found then add new sip details to user database
+    FoundUser.sip_fund_Details.push({ 
+        fundName:selectedFundName,
+        FundNav: selectedNav,
+        FundScheme: selectedScheme,
+        sip_amount:sip_amount,
+        sip_date:sip_date
+     });
+     await FoundUser.save();
+     return res.status(200).json({"msge":"new sip investment success"})
+    } catch (error) {
+      console.log( error.message);
+      return res.status(500).json({ msg: "Internal server error", error: error.message });
+    }
+})
+
 
 
 
