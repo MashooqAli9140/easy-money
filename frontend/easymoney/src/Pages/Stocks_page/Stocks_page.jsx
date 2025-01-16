@@ -16,6 +16,7 @@ const Stocks_page = () => {
       const [low, setlow] = useState("");
       const [close_val, setclose_val] = useState("");
       const [ showInvestCard , setshowInvestCard ] = useState(false)
+      const [ investDone , setinvestDone ] = useState(false);
 
       useEffect(() => {
         const fetchStocks = async () => {
@@ -62,19 +63,24 @@ const Stocks_page = () => {
             if( !id ) return alert("user id not get");
             if( !c_name || !high || !stockAmount  || !low || !close_val  ) return alert("please fill details")
             if( stockAmount < 500 || stockAmount > 10000  ){
-              return alert("please enter sip from 500 to 10k")
+              return alert("please enter between 500 to 10k")
             }
             try {
                 const response  = await axios.post("http://localhost:3000/new-stock-invest",stockData,{
                   headers:{ 'Content-type' : 'application/json'}
                 })
                 alert("data saved success");
-                setshowInvestCard(false),setstockAmount("");
+                setshowInvestCard(false),setinvestDone(true),setstockAmount("");
                 return response.status;
               } catch (error) {
                 console.log( error.message ,"error while send new Stock investment");
                 alert("please check frontend code");
               }
+       }
+       if( investDone ){
+        const closeinvest = setTimeout(() => {
+              setinvestDone(false);
+        },2000 );
        }
 
 
@@ -177,7 +183,7 @@ const Stocks_page = () => {
 {/* //ONE TIME INVESTMENT FORM START */}
         <div id='stock-form'>
             <div style={{ width:"100%",textAlign:"center", padding:'10px 10px 10px 10px', borderRadius:"12px"}}>
-                <h4 style={{ color: !stockAmount ? "red":"#212426"}}>Enter amount { '>' } = 500 </h4>
+                <h4 style={{ fontWeight:"100", color: !stockAmount ? "red":"#212426"}}>Enter amount { '>' } = 500 </h4>
                 <input value={stockAmount} onChange={ (e) => setstockAmount(e.target.value)} style={{ margin:"10px 10px 10px 10px", borderRadius:"5px", padding:"10px 5px 10px 5px", border:'2px solid #212426',outline:"none"}} type="number" placeholder='ENTER AMOUNT(1k-10k)' />
             </div>
 
@@ -188,11 +194,13 @@ const Stocks_page = () => {
                   <button onClick={ (e) => CloseInvestCard(e) } style={{width:"100%"}} id='stocks-fund-cancel-btn'> Cancel </button>
             </div>
         </div>{/* //ONE TIME INVESTMENT FORM END */}
-
-
       </div>
-
 </div>
+
+ {/* //after successfull investment */}
+ <div id='invest-done' style={{ textAlign:"center", display: investDone ? "block" : "none" }}>
+             <h2 style={{ color:'green'}}> Investment Done <i class="fa-solid fa-check"></i> </h2>
+ </div>{/* //ONE TIME INVESTMENT FORM END */}
 
 </>
 
