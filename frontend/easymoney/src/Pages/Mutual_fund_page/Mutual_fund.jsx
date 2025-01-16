@@ -117,19 +117,26 @@ const Mutual_fund = () => {
             }
     }
 
-
-
-
-
   return (
     <>
    <Navbar/>
     <div>
        <div id='mutual-fund-header'>
-         <div id='mutual-fund-01'>
-            <h4 style={{ fontWeight:"100",color:"#00B852"}}> Dashboard </h4>
-            <h6 style={{ fontWeight:"100",color:"#00B852"}}>  {">"} </h6>
-            <h4 style={{ fontWeight:"400",color:"light-grey"}}> Mutual funds </h4>
+       <div id='stocks-fund-01'>
+              <div style={{ padding:"5px 5px 5px 5px", display:"flex", gap:"5px",alignContent:'center',alignItems:'center',justifyContent:"space-between"}}>
+               <a href={ `/dashboard/${id}`} style={{cursor:"pointer"}} > <h4 style={{ fontWeight:"100",color:"#00B852"}}> Dashboard </h4> </a>
+               <h6 style={{ fontWeight:"100",color:"#00B852"}}>  {">"} </h6>
+               <h4 style={{ fontWeight:"400",color:"light-grey"}}> Mutual Funds </h4>
+              </div>
+
+                <div id='stock-mid-links'>
+                  <div style={{ textAlign:'center', borderRadius:"10px", padding:"10px 10px 10px 10px", backgroundColor:"#00B752"}}>
+                  <a href= { id ? `/dashboard/mutualfunds/${id}`:"/signup" }> MF </a>
+                  </div>
+                  <div style={{ textAlign:'center', borderRadius:"10px", padding:"10px 10px 10px 10px", backgroundColor:"#212426"}}>
+                  <a href={ id ? `/dashboard/stocks/${id}`:"/signup" }> Stocks </a>
+                  </div>
+               </div>
          </div>
        </div>
 
@@ -211,8 +218,11 @@ const Mutual_fund = () => {
 {/* //SIP FORM START */}
         <div id='sip-form' style={{ display: isSIPformActive ? "block" : "none"}}>
             <div style={{ width:"100%",textAlign:"center",display:"inline-block", padding:'10px 10px 10px 10px', borderRadius:"12px"}}> 
+              
                 <input value={sip_amount} onChange={ (e) => setSipAmount(e.target.value) } style={{ margin:"10px 10px 10px 10px", borderRadius:"5px", padding:"10px 5px 10px 5px", border:'2px solid #212426',outline:"none"}} type="number" placeholder='SIP AMOUNT (500-100K) ' />
+
                 <input value={sip_date}  onChange={ (e) => setSipDate(e.target.value) } style={{ margin:"10px 10px 10px 10px",  border:'2px solid #212426', borderRadius:"5px", padding:"10px 5px 10px 5px",outline:"none"}} type="number" placeholder='ENTER DATE (1-30)' />
+
             </div>
             <div style={{ padding:"10px 0px 10px 0px",  width:"100%"}} > 
                   <button onClick={ (e) => MakeNewSip(e) } style={{width:"100%"}} id='mutual-fund-invest-btn'> Start SIP </button>

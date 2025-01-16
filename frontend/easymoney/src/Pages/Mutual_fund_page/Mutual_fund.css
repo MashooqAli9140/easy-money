@@ -13,6 +13,13 @@
     align-items: center;
     align-content: center;
 }
+#stock-mid-links{
+    /* background-color: #212426; */
+    padding: 8px 12px 8px 12px;
+    border-radius: 12px;
+    display: none;
+    gap: 10px;
+}
 #mutual-fund-hero{
     /* background-color: rgb(146, 146, 146); */
     padding: 10px 20px 10px 20px;
@@ -145,6 +152,9 @@ overflow: hidden;
 @media screen and ( max-width:800px) {
     #mutual-funds-details-head{
         display: none;
+    }
+    #stock-mid-links{
+        display: flex;
     }
 
     #mutual-funds-main-content{
