@@ -156,6 +156,32 @@ app.post("/new-mf-onetime-investment", async( req , res ) => {
     }
 })
 
+//Handle New Stock investment
+app.post("/new-stock-invest", async( req , res ) => {
+    const { id , c_name , high , low , close_val , stockAmount } = req.body;
+    if( !id || !c_name || !high || !low || !close_val , !stockAmount  ) return res.status(400).json({"msge":"id or some data is not coming"});
+
+    try {
+    //now data is ok then find user to store New stock investment
+    const FoundUser = await signup_data.findById(id);
+    if( !FoundUser ) return res.status(404).json({"msge":"user not found to store stock data"});
+
+    //now user found then add new sip details to user database
+    FoundUser.stocks_investments.push({ 
+        company:c_name,
+        high: high,
+        low: low,
+        investedAt:close_val,
+        invested_amount:stockAmount
+     });
+     await FoundUser.save();
+     return res.status(200).json({"msge":"New stock investment success"})
+    } catch (error) {
+      console.log( error.message);
+      return res.status(500).json({ msg: "Internal server error", error: error.message });
+    }
+})
+
 //Handle stocks get req
 app.get("/get-stock-data", async( req , res ) => {
     try {
