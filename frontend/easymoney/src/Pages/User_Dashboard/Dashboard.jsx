@@ -4,14 +4,17 @@ import { useGlobleContext } from "../../componants/GlobleContext/GlobleContext";
 import "./Dashboard.css";
 import Portfolio from "./Portfolio";
 import Navbar from "../../componants/Navbar/Navbar";
+import { useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
   const { login, setLogin , login_user , setlogin_user , login_user_data } = useGlobleContext();
   if (id) {
     setLogin(true);
     setlogin_user(id)
   }
+
 
 if( !login_user_data)
 {
@@ -45,9 +48,7 @@ if( !login_user_data)
           </div>
 
             <div style={{ padding:"10px 10px 10px 10px"}}>
-              <a href={`/dashboard/mutualfunds/${id}`} >
-              <button id="continue-btn"> Continue </button>
-              </a>
+              <button onClick={ () => navigate(`/dashboard/mutualfunds/${id}`) } id="continue-btn"> Continue </button>
             </div>
             </div>
           </div>
@@ -61,9 +62,8 @@ if( !login_user_data)
           </div>
 
             <div style={{ padding:"10px 10px 10px 10px"}}>
-              <a href={`/dashboard/mutualfunds/${id}`}>
-              <button id="continue-btn"> Start SIP  </button>
-              </a>
+              <button onClick={ () => navigate(`/dashboard/mutualfunds/${id}`) } id="continue-btn"> Start SIP  </button>
+
             </div>
         </div>
       </div>
