@@ -1,9 +1,9 @@
-#mutual-fund-header{
+#stocks-fund-header{
     background-color: rgb(255, 255, 255);
     padding: 10px 20px 10px 20px;
     box-shadow: 1px 4px 5px rgba(0,0,0,0.2);
 }
-#mutual-fund-01{
+#stocks-fund-01{
     /* background-color: bisque; */
     padding: 10px 5px 10px 5px;
     max-width: 1200px;
@@ -13,11 +13,11 @@
     align-items: center;
     align-content: center;
 }
-#mutual-fund-hero{
+#stocks-fund-hero{
     /* background-color: rgb(146, 146, 146); */
     padding: 10px 20px 10px 20px;
 }
-#mutual-fund-02{
+#stocks-fund-02{
     background-color: rgb(255, 255, 255);
     border-radius: 12px;
     padding: 20px 15px 20px 15px;
@@ -29,7 +29,7 @@
     align-content: center; */
     box-shadow: 0px 7px 10px rgba(0,0,0,0.2);
 }
-#mutual-funds-details-head{
+#stocks-funds-details-head{
     background-color: #212426;
     border-radius: 12px;
     padding: 20px 15px 20px 15px;
@@ -38,9 +38,9 @@
     margin-top: 20px;
     color: white;
 }
-#mutual-funds-main-content{
-    background-color: #fefefe;
-    background-image: linear-gradient(315deg, #fefefe 0%, #00a4e4 74%);
+#stocks-funds-main-content{
+    background: rgb(0,51,102);
+    background: linear-gradient(159deg, rgba(0,51,102,1) 0%, rgba(15,82,186,1) 100%);
     border-radius: 12px;
     padding: 20px 15px 20px 15px;
     display: flex;
@@ -51,14 +51,14 @@
     color: white;
     box-shadow: 0px 4px 3px rgba(0,0,0,0.2);
 }
-#mutual-fund-h6-words{
+#stocks-fund-h6-words{
     margin-bottom: 4px;
     color: rgb(255, 255, 255);
     display: none;
     font-weight: 100;
     font-size: 12px;
 }
-#mutual-fund-invest-btn{
+#stocks-fund-invest-btn{
     background: white;
     border: none;
     border-radius: 12px;
@@ -68,7 +68,23 @@
     box-shadow: 1px 2px 10px rgba(0,0,0,0.4);
     color: #212426;
 }
-#mutual-fund-cancel-btn{
+#stock-invest{
+    background: #00B852;
+    border: none;
+    border-radius: 12px;
+    padding: 12px 15px 12px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 1px 2px 10px rgba(0,0,0,0.4);
+    color: #ffffff;
+}
+#stock-invest:hover{
+    background: #009554;
+    box-shadow: 1px 2px 10px rgba(0,0,0,0.4);
+    color: #ffffff;
+    font-weight: 600;
+}
+#stocks-fund-cancel-btn{
     background: white;
     border: none;
     border-radius: 12px;
@@ -78,14 +94,14 @@
     box-shadow: 1px 2px 10px rgba(0,0,0,0.4);
     color: #212426; 
 }
-#mutual-fund-cancel-btn:hover{
+#stocks-fund-cancel-btn:hover{
     background: #ff5c3f;
     font-weight: 600;
     transform: scale(0.98);
     transition: 0.1s;
     color: #ffffff;
 }
-#mutual-fund-invest-btn:hover{
+#stocks-fund-invest-btn:hover{
    background: #EDFDFE;
    font-weight: 600;
    transform: scale(0.98);
@@ -112,20 +128,11 @@ overflow: hidden;
 #invest-card-inner{
     background-color: white;
     padding: 20px 20px 20px 20px;
-    max-width: 600px;
+    max-width: 700px;
     margin: 0 auto 0;
     border-radius: 12px;
 }
-#invest-sip-btn{
-    background: none;
-    border: 2px solid white;
-    color: white;
-    border-radius: 10px;
-    padding: 12px 15px 12px 15px;
-    font-size: 18px;
-    cursor: pointer;
-    width: 100%;
-}
+
 #invest-onetime-btn{
     background: none;
     border: 2px solid white;
@@ -136,24 +143,24 @@ overflow: hidden;
     cursor: pointer;
     width: 100%; 
 }
-#sip-form{
+#stock-form{
     /* background-color: #00a4e4; */
     padding: 20px 10px 20px 10px;
 }
 
 /* //responsiveness */
 @media screen and ( max-width:800px) {
-    #mutual-funds-details-head{
+    #stocks-funds-details-head{
         display: none;
     }
 
-    #mutual-funds-main-content{
+    #stocks-funds-main-content{
        display: block;
     }
-    #mutual-fund-h6-words{
+    #stocks-fund-h6-words{
         display: block;
     }
-    #mutual-fund-invest-btn{
+    #stocks-fund-invest-btn{
      width:100%;
     }
 }

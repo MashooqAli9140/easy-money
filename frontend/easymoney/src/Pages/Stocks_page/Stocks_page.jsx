@@ -10,17 +10,12 @@ const Stocks_page = () => {
       const [ loading ,setloading ] = useState(true);
       const [error , setError ] = useState(null);
       const { id } = useParams();
-      const [isLoading, setIsLoading] = useState(true);
-      const [ fundData , setfundData ] = useState([]);
+      const [stockAmount ,setstockAmount ] = useState("");
+      const [c_name, setc_Name] = useState("");
+      const [high, sethigh] = useState("");
+      const [low, setlow] = useState("");
+      const [close_val, setclose_val] = useState("");
       const [ showInvestCard , setshowInvestCard ] = useState(false)
-      const [ isSIPformActive , setisSIPformActive ] = useState(true);
-      const [selectedFundName , setselectedFundName ] = useState("");
-      const [selectedScheme , setselectedScheme ] = useState("");
-      const [selectedNav , setselectednav ] = useState("");
-      const mutualFundIds = [ '148382','148459','148702','114984','148662']
-      const [ sip_amount , setSipAmount ] = useState("");
-      const [ sip_date ,   setSipDate ] = useState("");
-      const[ oneTimeAmount , setoneTimeAmount ] = useState("")
 
       useEffect(() => {
         const fetchStocks = async () => {
@@ -41,12 +36,55 @@ const Stocks_page = () => {
       if (error) return <h1>Error: {error}</h1>;
       console.log( "data is this-->", CompanyData );
 
+      function startInvesting( e , company_name , high , low , close  ){
+        e.preventDefault();
+        setshowInvestCard(true);
+        setc_Name(company_name);
+        sethigh(high);
+        setlow(low)
+        setclose_val(close);
+      }
+
+      function CloseInvestCard(e){
+        e.preventDefault();
+        setshowInvestCard(false);
+       }
+       async function MakeNewStockInvesting(e){
+             e.preventDefault();
+             const stockData = {
+              id,
+              c_name,
+              high,
+              low,
+              close_val,
+              stockAmount
+            }
+            if( !id ) return alert("user id not get");
+            if( !c_name || !high || !stockAmount  || !low || !close_val  ) return alert("please fill details")
+            if( stockAmount < 500 || stockAmount > 10000  ){
+              return alert("please enter sip from 500 to 10k")
+            }
+            try {
+                const response  = await axios.post("http://localhost:3000/new-stock-invest",stockData,{
+                  headers:{ 'Content-type' : 'application/json'}
+                })
+                alert("data saved success");
+                setshowInvestCard(false),setstockAmount("");
+                return response.status;
+              } catch (error) {
+                console.log( error.message ,"error while send new Stock investment");
+                alert("please check frontend code");
+              }
+       }
+
+
+
   return (
  <>
  <Navbar />
  <div>
-       <div id='mutual-fund-header'>
-         <div id='mutual-fund-01'>
+       <div id='stocks-fund-header'>
+         <div id='stocks-fund-01'>
             <h4 style={{ fontWeight:"100",color:"#00B852"}}> Dashboard </h4>
             <h6 style={{ fontWeight:"100",color:"#00B852"}}>  {">"} </h6>
             <h4 style={{ fontWeight:"400",color:"light-grey"}}> Stocks </h4>
@@ -54,14 +92,14 @@ const Stocks_page = () => {
        </div>
 
 {/* //main heading */}
-       <div id='mutual-fund-hero'>
-         <div id='mutual-fund-02'>
+       <div id='stocks-fund-hero'>
+         <div id='stocks-fund-02'>
               <div>
-                   <h1 style={{ color:"#212426"}}> Top 30 Stocks to Invest </h1>
+                   <h1 style={{ color:"#212426"}}> Top<span style={{ color:"#00B852"}}> 30 Stocks </span>  to Invest </h1>
               </div>
 
 {/* //head of the table */}
-              <div id='mutual-funds-details-head'>
+              <div id='stocks-funds-details-head'>
                     <div style={{ fontWeight:"100",width:"100%"}}> <h4> Company </h4> </div>
                     <div style={{  width:"100%"}} ><h4> 1D High </h4> </div>
                     <div style={{  width:"100%"}} ><h4> 1D Low </h4> </div>
@@ -69,37 +107,37 @@ const Stocks_page = () => {
                     <div style={{  width:"100%"}} ><h4> 1D Invest </h4>  </div>
               </div>
 
-{/* //mutual funds main content */}
+{/* //stocks funds main content */}
     { CompanyData.stocks.map( (data , index ) => ( 
-        <div id='mutual-funds-main-content' key={index }>
+        <div id='stocks-funds-main-content' key={index }>
               <div style={{ padding:"10px 0px 10px 0px", fontWeight:"100",width:"100%"}}>
-              <h6 id='mutual-fund-h6-words'> Company Name </h6>  
-              <h4> { data.symbol } </h4> 
+              <h6 id='stocks-fund-h6-words'> Company Name </h6>  
+              <h4> { data.symbol.split('.')[0] } </h4> 
               </div>
 
               <div style={{ padding:"10px 0px 10px 0px", width:"100%"}} >
-              <h6 id='mutual-fund-h6-words' > 1D High </h6>
+              <h6 id='stocks-fund-h6-words' > 1D High </h6>
               <h4> ₹{data.high }  </h4>
               </div>
 
               <div style={{ padding:"10px 0px 10px 0px",  width:"100%"}} >
-                  <h6 id='mutual-fund-h6-words' > 1D Low  </h6>
+                  <h6 id='stocks-fund-h6-words' > 1D Low  </h6>
                   <h4> ₹{ data.low }  </h4> 
               </div>
 
               <div style={{ padding:"10px 0px 10px 0px",  width:"100%"}} >
-                  <h6 id='mutual-fund-h6-words' > 1D Close  </h6>
+                  <h6 id='stocks-fund-h6-words' > 1D Close  </h6>
                   <h4> ₹{ data.close }  </h4> 
               </div>
 
               <div style={{ padding:"10px 0px 10px 0px",  width:"100%"}} > 
                   <a href=""> 
-                  <button onClick={ (e) => startInvesting( e)} id='mutual-fund-invest-btn'> Invest Now </button>
+                  <button onClick={ (e) => startInvesting( e, data.symbol, data.high, data.low, data.close )} id='stocks-fund-invest-btn'> Invest now </button>
                   </a>
               </div>
         </div>
           ))}
-{/* //mutual funds main content */}
+{/* //stocks funds main content */}
 
          </div>
         </div>
@@ -111,55 +149,43 @@ const Stocks_page = () => {
 {/* //INVESTCARD STARTS HERE// */}
 <div id='invest-card-outer' style={{ display: showInvestCard ? "block" : "none"}}>
       <div id='invest-card-inner' >
-          <div style={{ display:'flex', justifyContent:'space-evenly', gap:"5px", alignContent:'center',alignItems:'center', padding:'10px 10px 10px 10px', borderRadius:"12px", backgroundColor:"#212426"}} > 
-            <button onClick={ () => setisSIPformActive(true) } id='invest-sip-btn' style={{ background: isSIPformActive ? "#00B752" : "none" }}> SIP </button>
-            <button onClick={ () => setisSIPformActive(false) } id='invest-onetime-btn' style={{ background: !isSIPformActive ? "#00B752" : "none" }} > One Time </button>
-          </div>
-        
+
         <div id='invest-card-fund-details'>
-        <div id='mutual-funds-main-content'>
+        <div id='stocks-funds-main-content'>
               <div style={{ padding:"10px 0px 10px 0px", fontWeight:"100",width:"100%"}}>
-              <h5> Fund Name </h5>  
-              <h3> {selectedFundName} </h3> 
+              <h5 style={{ fontWeight:"100"}}> Company Name </h5>  
+              <h3> { c_name.split('.')[0] } </h3> 
               </div>
 
               <div style={{ padding:"10px 0px 10px 0px", width:"100%"}} >
-              <h5> Scheme category </h5>
-              <h3> {selectedScheme} </h3>
+              <h5 style={{ fontWeight:"100"}} > High </h5>
+              <h3> {high}  </h3>
               </div>
 
               <div style={{ padding:"10px 0px 10px 0px",  width:"100%"}} >
-                  <h5> NAV  </h5>
-                  <h3> { selectedNav } </h3> 
-                  </div>
-        </div>
-        </div>
+                  <h5 style={{ fontWeight:"100"}} > Low  </h5>
+                  <h3> {low} </h3> 
+              </div>
 
-{/* //SIP FORM START */}
-        <div id='sip-form' style={{ display: isSIPformActive ? "block" : "none"}}>
-            <div style={{ width:"100%",textAlign:"center",display:"inline-block", padding:'10px 10px 10px 10px', borderRadius:"12px"}}> 
-                <input value={sip_amount} onChange={ (e) => setSipAmount(e.target.value) } style={{ margin:"10px 10px 10px 10px", borderRadius:"5px", padding:"10px 5px 10px 5px", border:'2px solid #212426',outline:"none"}} type="number" placeholder='SIP AMOUNT (500-100K) ' />
-                <input value={sip_date}  onChange={ (e) => setSipDate(e.target.value) } style={{ margin:"10px 10px 10px 10px",  border:'2px solid #212426', borderRadius:"5px", padding:"10px 5px 10px 5px",outline:"none"}} type="number" placeholder='ENTER DATE (1-30)' />
-            </div>
-            <div style={{ padding:"10px 0px 10px 0px",  width:"100%"}} > 
-                  <button onClick={ (e) => MakeNewSip(e) } style={{width:"100%"}} id='mutual-fund-invest-btn'> Start SIP </button>
-            </div>
-            <div style={{ padding:"10px 0px 10px 0px",  width:"100%"}} > 
-                  <button onClick={ (e) => CloseInvestCard(e) } style={{width:"100%"}} id='mutual-fund-cancel-btn'> Cancel </button>
-            </div>
-        </div>{/* //SIP FORM END */}
+              <div style={{ padding:"10px 0px 10px 0px",  width:"100%"}} >
+                  <h5 style={{ fontWeight:"100"}} > Close  </h5>
+                  <h3> {close_val} </h3> 
+              </div>
+        </div>
+        </div>
 
 {/* //ONE TIME INVESTMENT FORM START */}
-        <div id='sip-form' style={{ display: !isSIPformActive ? "block" : "none"}}>
-            <div style={{ width:"100%",textAlign:"center",display:"inline-block", padding:'10px 10px 10px 10px', borderRadius:"12px"}}> 
-                <input value={oneTimeAmount} onChange={ (e) => setoneTimeAmount(e.target.value)} style={{ margin:"10px 10px 10px 10px", borderRadius:"5px", padding:"10px 5px 10px 5px", border:'2px solid #212426',outline:"none"}} type="number" placeholder='ENTER AMOUNT(1k-10k)' />
+        <div id='stock-form'>
+            <div style={{ width:"100%",textAlign:"center", padding:'10px 10px 10px 10px', borderRadius:"12px"}}>
+                <h4 style={{ color: !stockAmount ? "red":"#212426"}}>Enter amount { '>' } = 500 </h4>
+                <input value={stockAmount} onChange={ (e) => setstockAmount(e.target.value)} style={{ margin:"10px 10px 10px 10px", borderRadius:"5px", padding:"10px 5px 10px 5px", border:'2px solid #212426',outline:"none"}} type="number" placeholder='ENTER AMOUNT(1k-10k)' />
+            </div>
 
+            <div style={{ padding:"10px 0px 10px 0px",  width:"100%"}} > 
+                  <button onClick={ (e) => MakeNewStockInvesting(e)} style={{width:"100%"}} id='stock-invest'> Invest now </button>
             </div>
             <div style={{ padding:"10px 0px 10px 0px",  width:"100%"}} > 
-                  <button onClick={ (e) => MakeNewMFOnetime(e)} style={{width:"100%"}} id='mutual-fund-invest-btn'> Make One Time </button>
-            </div>
-            <div style={{ padding:"10px 0px 10px 0px",  width:"100%"}} > 
-                  <button onClick={ (e) => CloseInvestCard(e) } style={{width:"100%"}} id='mutual-fund-cancel-btn'> Cancel </button>
+                  <button onClick={ (e) => CloseInvestCard(e) } style={{width:"100%"}} id='stocks-fund-cancel-btn'> Cancel </button>
             </div>
         </div>{/* //ONE TIME INVESTMENT FORM END */}
 
