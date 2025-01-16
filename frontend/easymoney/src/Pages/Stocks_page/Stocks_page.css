@@ -9,9 +9,17 @@
     max-width: 1200px;
     margin: 0 auto 0;
     display: flex;
+    justify-content: space-between;
     gap: 10px;
     align-items: center;
     align-content: center;
+}
+#stock-mid-links{
+    /* background-color: #212426; */
+    padding: 8px 12px 8px 12px;
+    border-radius: 12px;
+    display: none;
+    gap: 10px;
 }
 #stocks-fund-hero{
     /* background-color: rgb(146, 146, 146); */
@@ -160,11 +168,13 @@ overflow: hidden;
 }
 
 /* //responsiveness */
-@media screen and ( max-width:800px) {
+@media screen and ( max-width:1000px) {
     #stocks-funds-details-head{
         display: none;
     }
-
+    #stock-mid-links{
+        display: flex;
+    }
     #stocks-funds-main-content{
        display: block;
     }

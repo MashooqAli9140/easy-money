@@ -91,9 +91,20 @@ const Stocks_page = () => {
  <div>
        <div id='stocks-fund-header'>
          <div id='stocks-fund-01'>
-            <h4 style={{ fontWeight:"100",color:"#00B852"}}> Dashboard </h4>
-            <h6 style={{ fontWeight:"100",color:"#00B852"}}>  {">"} </h6>
-            <h4 style={{ fontWeight:"400",color:"light-grey"}}> Stocks </h4>
+              <div style={{ padding:"5px 5px 5px 5px", display:"flex", gap:"5px",alignContent:'center',alignItems:'center',justifyContent:"space-between"}}>
+               <a href={ `/dashboard/${id}`} style={{cursor:"pointer"}} > <h4 style={{ fontWeight:"100",color:"#00B852"}}> Dashboard </h4> </a>
+               <h6 style={{ fontWeight:"100",color:"#00B852"}}>  {">"} </h6>
+               <h4 style={{ fontWeight:"400",color:"light-grey"}}> Stocks </h4>
+              </div>
+
+                <div id='stock-mid-links'>
+                  <div style={{ textAlign:'center', borderRadius:"10px", padding:"10px 10px 10px 10px", backgroundColor:"#212426"}}>
+                  <a href= { id ? `/dashboard/mutualfunds/${id}`:"/signup" }> MF </a>
+                  </div>
+                  <div style={{ textAlign:'center', borderRadius:"10px", padding:"10px 10px 10px 10px", backgroundColor:"#00B752"}}>
+                  <a href={ id ? `/dashboard/stocks/${id}`:"/signup" }> Stocks </a>
+                  </div>
+               </div>
          </div>
        </div>
 
