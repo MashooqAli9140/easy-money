@@ -33,7 +33,7 @@ const Stocks_page = () => {
         };
         fetchStocks();
       }, []);
-      if (loading) return <h1>Loading data for top 50 companies...</h1>;
+      if (loading) return <div style={{ textAlign:"center",margin:"50px"}}> <h1>Loading data for top 50 companies...</h1> </div> 
       if (error) return <h1>Error: {error}</h1>;
       console.log( "data is this-->", CompanyData );
 
