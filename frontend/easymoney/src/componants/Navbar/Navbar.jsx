@@ -16,7 +16,7 @@ const Navbar = () => {
       
     <div id='nav-main-box' style={{ padding:"10px 20px 10px 20px", width:'100%' , backgroundColor:"#212426"}}>
       <div id='navleft' style={ { width:"250px", maxwidth:"250px"}}>
-        <a href= '/' >
+        <a href= { id ? `/dashboard/${id}`:"/" }>
         <img style={{ width:'100%' ,height:"auto"}} src= {Logo} alt="Logo" />
         </a>
       </div>
