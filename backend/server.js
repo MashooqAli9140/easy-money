@@ -6,6 +6,7 @@ const bodyparser = require("body-parser")
 const mongoose = require('mongoose');
 const connectDB = require('./config/db.js');
 const signup_data = require('./model/signup_data.js')
+const Stocks_data = require('./model/stocks_schema.js')
 const Bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const JWT_SECRET = process.env.JWT_SECRET
@@ -155,7 +156,27 @@ app.post("/new-mf-onetime-investment", async( req , res ) => {
     }
 })
 
+//Handle stocks get req
+app.get("/get-stock-data", async( req , res ) => {
+    try {
+    // Fetch all stock data from the database
+    const getData = await Stocks_data.find();
 
+    // If no data is found, return a 404 response
+    if (!getData || getData.length === 0) {
+      return res.status(404).json({ msg: "No stock data found" });
+    }
+    // Return the fetched data with a success message
+    return res.status(200).json({
+        msg: "All stocks fetched successfully",
+        data: getData
+      });
+      
+    } catch (error) {
+      console.log( error.message);
+      return res.status(500).json({ msg: "Internal server error", error: error.message });
+    }
+})
 
 
 const PORT = process.env.PORT || 4500;
