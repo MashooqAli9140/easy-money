@@ -42,7 +42,7 @@ const Navbar = () => {
 
       <div style={{ textAlign:"center", padding:"10px 10px 10px 10px", margin:"0 auto 0", width:"250px"}}>
         <div style={{ margin:"10px 0px 10px 0px", borderRadius:"25px", border:"1px solid #BAFF2F " }}>
-           <a style={{ margin:"12px 0px 12px 0px", fontSize:"20px", fontWeight:"700", display:"block"}} href='/dashboard/user-profile'> My Profile </a> 
+           <a style={{ margin:"12px 0px 12px 0px", fontSize:"20px", fontWeight:"700", display:"block"}} href={ `/dashboard/user-profile/${id}` } > My Profile </a> 
         </div>
         <div style={{ margin:"10px 0px 10px 0px", borderRadius:"25px", border:"1px solid #BAFF2F " }}>
            <a style={{ margin:"12px 0px 12px 0px", fontSize:"20px", fontWeight:"700", display:"block"}} href="/"> Log out </a> 
