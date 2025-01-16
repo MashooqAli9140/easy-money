@@ -24,18 +24,16 @@ const Navbar = () => {
       <div id='nav-mid'>
             <a href= { id ? `/dashboard/mutualfunds/${id}`:"/signup" }> Mutual Funds </a>
             <a href={ id ? `/dashboard/stocks/${id}`:"/signup" }> Stocks </a>
-            <a href={ id ? `/dashboard/NPS/${id}`:"/signup" }> NPS </a>
             <a href={ id ? `/dashboard/sip-calculator/${id}`:"/signup" }> SIP Calculator </a>
       </div>
 
       <div id='navright' style={{ display: id ? "none" : "flex"}} >
         <a href="/signup"> <button id='login-btn'> Login </button> </a>
         <a href="/signup"> <button id='signup-btn' > SignUp </button> </a>
-
-        <div id='nav-right-menu'>
+      </div>
+      <div id='nav-right-menu' style={{ display:id ? "block":"none" }} >
          <i class="fa-solid fa-bars fa-2x" onClick={ () => setopenmenu( !openmenu ) } style={{  display: openmenu ? "none" : "block" , color:"white"}}> </i>
          <i class="fa-solid fa-x fa-2x" onClick={ () => setopenmenu( !openmenu ) } style={{ display: openmenu ? "block" : "none" , color:"white"}} ></i>
-         </div>
       </div>
 
     </div>
@@ -44,16 +42,10 @@ const Navbar = () => {
 
       <div style={{ textAlign:"center", padding:"10px 10px 10px 10px", margin:"0 auto 0", width:"250px"}}>
         <div style={{ margin:"10px 0px 10px 0px", borderRadius:"25px", border:"1px solid #BAFF2F " }}>
-           <a style={{ margin:"12px 0px 12px 0px", fontSize:"20px", fontWeight:"700", display:"block"}} href="/"> Mutual Funds </a> 
+           <a style={{ margin:"12px 0px 12px 0px", fontSize:"20px", fontWeight:"700", display:"block"}} href='/dashboard/user-profile'> My Profile </a> 
         </div>
         <div style={{ margin:"10px 0px 10px 0px", borderRadius:"25px", border:"1px solid #BAFF2F " }}>
-           <a style={{ margin:"12px 0px 12px 0px", fontSize:"20px", fontWeight:"700", display:"block"}} href="/">Stocks </a> 
-        </div>
-        <div style={{ margin:"10px 0px 10px 0px", borderRadius:"25px", border:"1px solid #BAFF2F " }}>
-           <a style={{ margin:"12px 0px 12px 0px", fontSize:"20px", fontWeight:"700", display:"block"}} href="/"> NPS </a> 
-        </div>
-        <div style={{ margin:"10px 0px 10px 0px", borderRadius:"25px", border:"1px solid #BAFF2F " }}>
-           <a style={{ margin:"12px 0px 12px 0px", fontSize:"20px", fontWeight:"700", display:"block"}} href="/"> SIP Calculator </a> 
+           <a style={{ margin:"12px 0px 12px 0px", fontSize:"20px", fontWeight:"700", display:"block"}} href="/"> Log out </a> 
         </div>
       </div>
       

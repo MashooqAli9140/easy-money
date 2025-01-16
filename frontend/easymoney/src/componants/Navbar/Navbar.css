@@ -58,7 +58,7 @@
     /* background-color: #00B852; */
     padding: 10px 10px 10px 10px;
     cursor: pointer;
-    display: none;
+    display: block;
 }
 #menu-items{
    background-color:#303233;
@@ -72,9 +72,6 @@
     
     #nav-mid{
         display: none;
-    }
-    #nav-right-menu{
-        display: block;
     }
     #menu-items{
         display: block;
