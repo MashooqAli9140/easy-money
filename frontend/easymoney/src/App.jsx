@@ -9,6 +9,7 @@ import Signup_page from './Pages/Signup_page/Signup_page.jsx';
 import Dashboard from './Pages/User_Dashboard/Dashboard.jsx';
 import { GlobleProvider } from './componants/GlobleContext/GlobleContext.jsx';
 import Mutual_fund from './Pages/Mutual_fund_page/Mutual_fund.jsx';
+import Stocks_page from './Pages/Stocks_page/Stocks_page.jsx';
 
 function App() {
 
@@ -37,6 +38,9 @@ function App() {
         </Routes>
         <Routes>
           <Route path='/dashboard/mutualfunds/:id'  element={ <Mutual_fund/> } />
+        </Routes>
+        <Routes>
+          <Route path='/dashboard/stocks/:id'  element={ <Stocks_page/> } />
         </Routes>
         
     </BrowserRouter>
