@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { useGlobleContext } from "../../componants/GlobleContext/GlobleContext";
 import "./Dashboard.css";
@@ -10,13 +10,14 @@ const Dashboard = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const { login, setLogin , login_user , setlogin_user , login_user_data } = useGlobleContext();
+  const [ username, setusername ] = useState("")
   if (id) {
     setLogin(true);
     setlogin_user(id)
   }
 
 console.log( "data-->", login_user_data );
-if( !login_user_data)
+if( !login_user_data && login_user_data.name )
 {
   return(
     <div style={{ backgroundColor:"red", padding:"20px 20px 20px 20px"}}>
@@ -24,13 +25,13 @@ if( !login_user_data)
     </div>
   )
 }
-
   return (
     <>
     <Navbar />
     <div id="dashboard-hero">
       <div id="dashboard-hero-header">
-           <h1 style={{ fontWeight:"100"}}> <b> { login_user_data && login_user_data.name } </b> nice to meet you! </h1>
+        {/* //Name section */}
+           <h1 style={{ fontWeight:"100"}}> <b> Hey, { login_user_data && login_user_data.name } </b> nice to meet you! </h1>
            <br />
           <p>
             Welcome aboard. Start investing or upload your external wealth to
