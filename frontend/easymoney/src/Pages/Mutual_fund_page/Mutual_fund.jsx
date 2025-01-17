@@ -18,7 +18,8 @@ const Mutual_fund = () => {
       const mutualFundIds = [ '148382','148459','148702','114984','148662']
       const [ sip_amount , setSipAmount ] = useState("");
       const [ sip_date ,   setSipDate ] = useState("");
-      const[ oneTimeAmount , setoneTimeAmount ] = useState("")
+      const[ oneTimeAmount , setoneTimeAmount ] = useState("");
+      const [ investDone , setinvestDone ] = useState(false);
     
       useEffect(() => {
         const fetchMutualFundData = async () => {
@@ -82,7 +83,7 @@ const Mutual_fund = () => {
                 headers:{ 'Content-type' : 'application/json'}
               })
               alert("data saved success");
-              setshowInvestCard(false),setSipAmount(""),setselectedFundName(""),setselectedScheme(""),setselectednav(""),setSipDate("")
+              setshowInvestCard(false), setinvestDone(true), setSipAmount(""),setselectedFundName(""),setselectedScheme(""),setselectednav(""),setSipDate("")
               return response.status;
             } catch (error) {
               console.log( error.message ,"error while send new SIP");
@@ -109,13 +110,19 @@ const Mutual_fund = () => {
                 headers:{ 'Content-type' : 'application/json'}
               })
               alert("data saved success");
-              setshowInvestCard(false),setoneTimeAmount("");
+              setshowInvestCard(false),setinvestDone(true),setoneTimeAmount("");
               return response.status;
             } catch (error) {
               console.log( error.message ,"error while send new one time investment");
               alert("please check frontend code");
             }
     }
+
+    if( investDone ){
+      const closeinvest = setTimeout(() => {
+            setinvestDone(false);
+      },2000 );
+     }
 
   return (
     <>
@@ -251,6 +258,10 @@ const Mutual_fund = () => {
 
 </div>
 
+ {/* //after successfull investment */}
+ <div id='invest-done' style={{ textAlign:"center", display: investDone ? "block" : "none" }}>
+             <h2 style={{ color:'green'}}> Investment Done <i class="fa-solid fa-check"></i> </h2>
+ </div>{/* //ONE TIME INVESTMENT FORM END */}
 
     </>
 
