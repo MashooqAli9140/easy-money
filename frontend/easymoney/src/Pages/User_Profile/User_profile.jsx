@@ -72,14 +72,14 @@ if( isprofileupdated )
       <div style={{ boxShadow:"0px 2px 5px 5px rgba(0,0,0,0.3)", maxWidth:"600px", backgroundColor:"white", padding:"30px 10px 30px 10px",  borderRadius:"25px", margin:"0 auto 0"}}>
              
              <div style={{ boxShadow:"1px 4px px rgba(0,0,0,0.5)", backgroundColor:"#212426",borderRadius:"25px", maxWidth:"200px",margin:"0 auto 0",padding:"10px 15px 10px 15px"}}>
-                <h2 style={{ textAlign:'center',color:"white"}}> MY PROFILE </h2>
+                <h2 style={{ textAlign:'center',color:"white", fontWeight:"400"}}> MY PROFILE </h2>
              </div>
 
 
 {/* //INPUTS PART */}
            {/* //NAME SECTION */}
            <div style={{ padding:"2px 10px 2px 10px", fontWeight:"100", color:"#212426"}}>
-               <h4> Name </h4>
+               <h4 style={{fontWeight:'100'}}> Name </h4>
             </div>
             <div style={{ margin:"10px 0px 10px 0px", display:"flex", justifyContent:"space-between", backgroundColor:"#212426", alignContent:'center',alignItems:'center', padding:"13px 16px 10px 16px", color:"white", borderRadius:"25px"}}> 
                {/* //CAN NOT EDIT THE NAME */}
@@ -88,7 +88,7 @@ if( isprofileupdated )
             </div>
  {/* //EMAIL SECTION */}
             <div style={{ padding:"2px 10px 2px 10px", fontWeight:"100", color:"#212426"}}>
-               <h4> Email </h4>
+               <h4 style={{fontWeight:'100'}} > Email </h4>
             </div>
             <div style={{ margin:"10px 0px 10px 0px", display:"flex", justifyContent:"space-between", backgroundColor:"#212426", alignContent:'center',alignItems:'center', padding:"13px 16px 10px 16px", color:"white", borderRadius:"25px"}}> 
 
@@ -99,7 +99,7 @@ if( isprofileupdated )
 
  {/* //MOBILE NUMBER SECTION */}
             <div style={{ padding:"2px 10px 2px 10px", fontWeight:"100", color:"#212426"}}>
-               <h4> Mobile Number </h4>
+               <h4 style={{fontWeight:'100'}} > Mobile Number </h4>
             </div>
             <div style={{ margin:"10px 0px 10px 0px", display:"flex", justifyContent:"space-between", backgroundColor:"#212426", alignContent:'center',alignItems:'center', padding:"13px 16px 10px 16px", color:"white", borderRadius:"25px"}}> 
 
@@ -122,7 +122,7 @@ if( isprofileupdated )
             </div>
            <div>  
                <div style={{ padding:"10px 10px 10px 10px"}}>
-                <button onClick={ () => navigate(`/dashboard/${id}`)} style={{ cursor:"pointer", width:'100%', background:"red",color:"white", padding:"10px 15px 10px 15px",outline:"none",border:"none",borderRadius:"5px", fontSize:"16px"}}> Go back </button>
+                <button onClick={ () => navigate(`/dashboard/${id}`)} style={{  cursor:"pointer", width:'100%', background:"red",color:"white", padding:"10px 15px 10px 15px",outline:"none",border:"none",borderRadius:"5px", fontSize:"16px"}}> Go back </button>
                </div>
             </div>
 
