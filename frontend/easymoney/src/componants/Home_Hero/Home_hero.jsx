@@ -2,6 +2,8 @@ import React from 'react';
 import './Home_hero.css';
 import Grow from "/images/Grow.png"
 import Navbar from '../Navbar/Navbar';
+import Home_Hero_2 from '../Home_Hero/Home_Hero_2.jsx';
+import Signup from '../signup/Signup.jsx';
 const Home_hero = () => {
   return (
     <>
@@ -24,9 +26,11 @@ const Home_hero = () => {
             <div id='grow-icon-div'>
                   <img style={{ width:"100%"}} src= {Grow} alt="grow_icon" />
             </div>
-        </div>
-      
+        </div>  
     </div>
+    <Home_Hero_2 />
+    <Signup />
+
 
     </>
   )
