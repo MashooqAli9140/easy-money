@@ -15,7 +15,7 @@ const Dashboard = () => {
     setlogin_user(id)
   }
 
-
+console.log( "data-->", login_user_data );
 if( !login_user_data)
 {
   return(

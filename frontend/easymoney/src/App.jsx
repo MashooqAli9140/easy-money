@@ -28,7 +28,7 @@ function App() {
           <Route path='/dashboard/:id'  element={ <Dashboard/> } />
           <Route path='/dashboard/mutualfunds/:id'  element={ <Mutual_fund/> } />
           <Route path='/dashboard/stocks/:id'  element={ <Stocks_page/> } />
-          <Route path='/dashboard/user-profile/:id'  element={ <User_profile/> } />
+          <Route path='/dashboard/userprofile/:id'  element={ <User_profile/> } />
         </Routes>
  
     </BrowserRouter>
