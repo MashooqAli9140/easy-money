@@ -104,6 +104,7 @@ app.get("/get-user-data/:id", async ( req , res ) => {
     }
 })
 
+
 //Handle New sip req
 app.post("/new-sip-req", async( req , res ) => {
     const { id , selectedFundName , selectedNav , selectedScheme , sip_amount , sip_date } = req.body;
