@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import Navbar from '../../components/Navbar/Navbar'; // Navbar component
 import './Sip_calculator.css'; // CSS for styling the component
+import Navbar from '../../componants/Navbar/Navbar';
 
 const Sip_calculator = () => {
   // State variables for SIP and Lumpsum calculations
