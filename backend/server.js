@@ -59,6 +59,30 @@ app.post("/user-signup-data", async( req , res ) => {
     }
 })
 
+//profile update req
+app.put("/profile-edit-req", async( req , res ) => {
+    const { id , editedNumber , editedEmail } = req.body;
+    if( !id || !editedNumber || !editedEmail ) return res.status(401).json( {"msge" : "updated details are missing"});
+
+    try {
+        //finding the user
+        const FoundUser = await signup_data.findById(id);
+        //if not found then
+        if( !FoundUser ) return res.status(404).json({"msge":"user not found"});
+
+        //now user is found then change previous details
+        FoundUser.email = editedEmail;
+        FoundUser.mobile_num =editedNumber;
+        //saving the updated data
+        await FoundUser.save()
+        console.log("user data updated -->", FoundUser );
+        return res.status(200).json({ "msge" : "user profile data updated" , FoundUser  });      
+    } catch (error) {
+        console.error("err while updating the data");
+        return res.status(500).json({ "msge":"error while updating the data", error });
+    }
+})
+
 //Handle login req
 app.post('/user-login-req', async( req , res ) => {
     const { email , password } = req.body;
