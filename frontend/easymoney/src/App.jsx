@@ -7,6 +7,7 @@ import { GlobleProvider } from './componants/GlobleContext/GlobleContext.jsx';
 import Mutual_fund from './Pages/Mutual_fund_page/Mutual_fund.jsx';
 import Stocks_page from './Pages/Stocks_page/Stocks_page.jsx';
 import User_profile from './Pages/User_Profile/User_profile.jsx';
+import Sip_calculator from './Pages/Sip_Calciltor_page/Sip_calculator.jsx';
 
 function App() {
 
@@ -22,6 +23,7 @@ function App() {
           <Route path='/dashboard/mutualfunds/:id'  element={ <Mutual_fund/> } />
           <Route path='/dashboard/stocks/:id'  element={ <Stocks_page/> } />
           <Route path='/dashboard/userprofile/:id'  element={ <User_profile/> } />
+          <Route path='/dashboard/sip-calculator/:id'  element={ <Sip_calculator/> } />
         </Routes>
  
     </BrowserRouter>
