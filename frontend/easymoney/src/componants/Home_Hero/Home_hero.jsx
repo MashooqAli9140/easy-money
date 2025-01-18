@@ -25,7 +25,8 @@ const Home_hero = () => {
                 </h5>
             </div>
             <div id='start-btn-div'>
-                <button id='start-btn' style={{ borderRadius:"25px", width:"100%", padding:"12px 8px 12px 8px", color:"white", border:"1px solid #BAFF2F",outline:"none"}}> <a href="/signup"> Start Your Journey </a> </button>
+          
+                <button id='start-btn' style={{ borderRadius:"25px", width:"100%", padding:"12px 8px 12px 8px", color:"white", border:"2px solid #18CB96",outline:"none"}}> <a href="/signup"> Start Your Journey </a> </button>
             </div>
         </div>  
     </div>
