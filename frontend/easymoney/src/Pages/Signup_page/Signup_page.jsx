@@ -96,6 +96,27 @@ const Signup_page = () => {
     }
  } 
 
+//Handle Password Change req
+async function  HandlePasswordChange(e){
+    e.preventDefault();
+     const data = {
+           email
+          }
+
+try {
+const response = await axios.post("http://localhost:3000/change-password", data ,{
+  headers: {
+    "Content-Type": "application/json",
+  },
+} )
+alert("reset req sent to you registered email")
+return response.status
+} catch (error) {
+console.log( error )
+alert("error while sending reset req" ,error.message)
+}
+
+}
 
     //when passowrd or email is icorrect then show error for 5 SECONDS
     if( openerror === "block" ){
@@ -196,7 +217,7 @@ const Signup_page = () => {
             </div>
             {/* //signup or login form inputs */}
             <div id='form-inputs'>
-                <form onSubmit={ (e) => SendLoginReq(e) }>
+                <form onSubmit={ (e) => HandlePasswordChange(e) }>
                     <div style={{ padding:"5px 5px 5px 5px"}}>
                        <input value={ email } onChange={ (e) => setEmail( e.target.value )} id='name-input' type="text" placeholder='Enter Email' />
                     </div>
