@@ -147,7 +147,7 @@ alert("error while sending reset req" ,error.message)
                        <input value={ email } onChange={ (e) => setEmail(e.target.value) } id='name-input' type="text" placeholder='Enter Email' />
                     </div>
                     <div style={{ padding:"5px 5px 5px 5px"}}>
-                       <input minLength={8} value={ password } onChange={ (e) => setPassword(e.target.value) } id='name-input' type="text" placeholder='Enter Password' />
+                       <input minLength={8} value={ password } onChange={ (e) => setPassword(e.target.value) } id='name-input' type="password" placeholder='Enter Password' />
                     </div>
    
                     <div style={{ padding:"5px 5px 5px 5px"}}>
@@ -186,7 +186,7 @@ alert("error while sending reset req" ,error.message)
                        <input value={ email } onChange={ (e) => setEmail( e.target.value )} id='name-input' type="text" placeholder='Enter Email' />
                     </div>
                     <div style={{ padding:"5px 5px 5px 5px"}}>
-                       <input value={ password } onChange={ (e) => setPassword( e.target.value )}  id='name-input' type="text" placeholder='Enter Password' />
+                       <input value={ password } onChange={ (e) => setPassword( e.target.value )}  id='name-input' type="password" placeholder='Enter Password' />
                     </div>
                     <div style={{ display: openerror , textAlign:'center', padding:"5px 5px 5px 5px"}}>
                        <p style={{ color:"red"}}> email or password is incorrect </p>
