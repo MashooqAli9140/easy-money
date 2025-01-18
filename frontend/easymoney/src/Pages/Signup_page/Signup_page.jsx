@@ -5,7 +5,6 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useGlobleContext } from '../../componants/GlobleContext/GlobleContext';
 import Navbar from '../../componants/Navbar/Navbar';
-import Footer from '../../componants/footer/Footer.jsx'
 
 const Signup_page = () => {
     const [openlogin , setopenLogin] = useState("none")
@@ -29,14 +28,6 @@ const Signup_page = () => {
         setopensignup("block");
     } 
 
-    //when passowrd or email is icorrect then show error for 5 SECONDS
-    if( openerror === "block" ){
-        const errorTimeout = setTimeout( ()=> {
-            setOpenError("none")
-      },5000)
-    }
-
-
 //SIGN UP REQ FUNCTION
     async function SendUserSignup(e){
            e.preventDefault();
@@ -58,8 +49,8 @@ const Signup_page = () => {
             setName("") , setEmail("") , setPassword(""), setMobile_num("");
             return response.status; 
            } catch (error) {
-              console.log("error while creating accoung" , error.msge );
-              alert("error while sending");
+              console.log("error while creating account" , error.message );
+              if(error.message === "Request failed with status code 509" ) return alert("email or number is already registered")
            }
     }
 
@@ -99,12 +90,19 @@ const Signup_page = () => {
  } 
 
 
+    //when passowrd or email is icorrect then show error for 5 SECONDS
+    if( openerror === "block" ){
+        const errorTimeout = setTimeout( ()=> {
+            setOpenError("none")
+      },5000)
+    }
+
 
 
   return (
     <>
     <Navbar />
-    <div style={{display:'flex',justifyContent:'center', backgroundColor:"white", padding:"40px 20px 40px 20px"}}>
+    <div style={{display:'flex',justifyContent:'center', backgroundColor:"#4317A2", padding:"40px 20px 40px 20px"}}>
 {/* //SIGN FORM  */}
         <div id='signup_form' style={{ display:opensignup }}>
             {/* //form logo */}
@@ -115,17 +113,19 @@ const Signup_page = () => {
             <div id='form-inputs'>
                 <form onSubmit={ (e) => SendUserSignup(e)}>
                     <div style={{ padding:"5px 5px 5px 5px"}}>
-                       <input value={ name } onChange={ (e) => setName(e.target.value) } id='name-input' type="text" placeholder='Enter Your Name' />
+                       <input min={4} value={ name } onChange={ (e) => setName(e.target.value) } id='name-input' type="text" placeholder='Enter Your Name' />
                     </div>
                     <div style={{ padding:"5px 5px 5px 5px"}}>
                        <input value={ email } onChange={ (e) => setEmail(e.target.value) } id='name-input' type="text" placeholder='Enter Email' />
                     </div>
                     <div style={{ padding:"5px 5px 5px 5px"}}>
-                       <input value={ password } onChange={ (e) => setPassword(e.target.value) } id='name-input' type="text" placeholder='Enter Password' />
+                       <input minLength={8} value={ password } onChange={ (e) => setPassword(e.target.value) } id='name-input' type="text" placeholder='Enter Password' />
                     </div>
+   
                     <div style={{ padding:"5px 5px 5px 5px"}}>
-                       <input value={ mobile_num } onChange={ (e) => setMobile_num(e.target.value) } id='name-input' type="text" placeholder='Enter Mobile Number' />
+                       <input minLength={10} value={ mobile_num } onChange={ (e) => setMobile_num(e.target.value) } id='name-input' type="text" placeholder='Enter Mobile Number' />
                     </div>
+
                     <div style={{ padding:"5px 5px 5px 5px", marginTop:"10px"}}>
                         <button type='submit' id='signup-form-btn'> Sign up </button>
                     </div>
@@ -182,7 +182,6 @@ const Signup_page = () => {
         </div>
 
     </div>
-    <Footer />
     </>
   )
 }
