@@ -44,17 +44,14 @@ Welcome to **EasyMoney**, a platform to simplify and guide users in investing in
    git clone https://github.com/your-repo/easymoney.git
    cd easymoney
 
-2. Navigate to the frontend directory:
-bash
-Copy
-Edit
-cd frontend
-
-3. Install dependencies:
-npm install
-
-4.  Run the development server:
-npm run dev
+   Navigate to the frontend directory:
+   cd frontend
+   
+   Install dependencies:
+   npm install
+   
+   Run the development server:
+   npm run dev
 
 
 🛠 Backend Setup
