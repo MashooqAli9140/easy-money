@@ -9,6 +9,12 @@ const Home_hero = () => {
     <>
     <Navbar />
     <div id='home-hero'>
+
+        <div id='home-hero-right' >
+            <div id='grow-icon-div'>
+                  <img style={{ width:"100%"}} src= {Grow} alt="grow_icon" />
+            </div>
+        </div>
         <div id='home-hero-left'>
             <h1> Grow wealth. </h1> 
             <h1> Achieve Goals. </h1>
@@ -19,12 +25,7 @@ const Home_hero = () => {
                 </h5>
             </div>
             <div id='start-btn-div'>
-                <button id='start-btn' style={{ background:'none', borderRadius:"25px", width:"100%", padding:"12px 8px 12px 8px", color:"white", border:"1px solid #BAFF2F",outline:"none"}}> <a href="/"> Start Your Journey </a></button>
-            </div>
-        </div>
-        <div id='home-hero-right' >
-            <div id='grow-icon-div'>
-                  <img style={{ width:"100%"}} src= {Grow} alt="grow_icon" />
+                <button id='start-btn' style={{ borderRadius:"25px", width:"100%", padding:"12px 8px 12px 8px", color:"white", border:"1px solid #BAFF2F",outline:"none"}}> <a href="/signup"> Start Your Journey </a> </button>
             </div>
         </div>  
     </div>

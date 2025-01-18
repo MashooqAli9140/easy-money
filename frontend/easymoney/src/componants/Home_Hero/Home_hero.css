@@ -1,6 +1,6 @@
 #home-hero{
-    background-color: #2b4162;
-    background-image: linear-gradient(315deg, #2b4162 0%, #12100e 74%);
+    /* background-color: #9921e8; */
+    background-image: linear-gradient(135deg, #132d75, #4e13ac);
     padding: 50px 30px 50px 30px;
     display: flex;
     justify-content: center;
@@ -9,7 +9,7 @@
     /* background-color: red; */
     padding: 30px 5px 30px 5px;
     flex: 1;
-    color: white;  
+    color: #F2F2F2;
     /* text-align: center; */
 }
 #home-hero-left h1{
@@ -27,6 +27,12 @@
 }
 #start-btn{
     cursor: pointer;
+    background: none;
+}
+#start-btn:hover{
+    background: #212426;
+    color: white;
+    transition: 0.1s ease-in;
 }
 
 #grow-icon-div{
