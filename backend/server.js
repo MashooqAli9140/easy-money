@@ -335,6 +335,12 @@ app.get("/get-stock-data", async( req , res ) => {
 })
 
 
+// sending index.html file for all routes
+app.get("/*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "dist", "index.html"));
+});
+
+
 const PORT = process.env.PORT || 4500;
 app.listen( PORT , ()=> {
     console.log( `server running on PORT ${PORT} `)
