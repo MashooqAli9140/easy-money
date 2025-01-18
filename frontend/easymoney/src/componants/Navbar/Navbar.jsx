@@ -3,11 +3,11 @@ import Logo from "/images/Logo.png"
 import './Navbar.css';
 import { useState } from 'react';
 import { useParams } from 'react-router-dom'
-import { useGlobleContext } from '../../componants/GlobleContext/GlobleContext';
 import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
       const [ openmenu , setopenmenu ] = useState(false);
+      
       const { id } = useParams();
       const navigate = useNavigate();
 

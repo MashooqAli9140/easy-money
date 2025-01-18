@@ -4,9 +4,6 @@ import Grow from "/images/Grow.png"
 import Navbar from '../Navbar/Navbar';
 import Home_Hero_2 from '../Home_Hero/Home_Hero_2.jsx';
 import Signup from '../signup/Signup.jsx';
-import Footer from '../footer/Footer.jsx';
-
-
 
 const Home_hero = () => {
   return (
@@ -36,6 +33,9 @@ const Home_hero = () => {
     </div>
     <Home_Hero_2 />
     <Signup />
+
+
+
     </>
   )
 }

@@ -1,5 +1,4 @@
 import React, { useState , useEffect } from 'react'
-import Navbar from "../../componants/Navbar/Navbar";
 import { useParams } from 'react-router-dom';
 import { useGlobleContext } from "../../componants/GlobleContext/GlobleContext";
 import axios from 'axios';
@@ -62,7 +61,6 @@ if( isprofileupdated )
 
   return (
     <>
-    <Navbar />
     <div style={{ display: isprofileupdated ? "block" : "none", backgroundColor:"#00B852", color:"white",padding:'10px 10px 10px 10px',textAlign:"center"}}>
       <h2> Profile Update success </h2>
     </div>
