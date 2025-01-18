@@ -37,7 +37,11 @@ app.use(express.static(path.join(__dirname, "dist" )));
 app.use(
     helmet.contentSecurityPolicy({
       directives: {
-        defaultSrc: ["'self'"], // Restricts default sources
+        defaultSrc: ["'self'"],
+        connectSrc: [
+          "'self'", // Allow API calls to the same origin
+          "https://api.mfapi.in", // Allow your frontend to call the external mutual fund API
+        ], // Restricts default sources
         fontSrc: [
           "'self'",
           "https://fonts.googleapis.com", // For Google Fonts
@@ -53,6 +57,7 @@ app.use(
       },
     })
   );
+
 
 
 //1ststep to change pw is to create nodemailer congi  
