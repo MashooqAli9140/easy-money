@@ -11,6 +11,7 @@ const Bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const nodemailer = require('nodemailer')
 const JWT_SECRET = process.env.JWT_SECRET
+const helmet = require('helmet');
 
 
 //DATABCE CONNECTED
@@ -27,6 +28,27 @@ app.use( cors( {
     methods:[ 'GET', 'PUT' , 'POST' , 'DELETE'],
     credentials:true, //Allow cookie if needed
 }))
+
+//helmet use for cdnjs fonts and icon from font awesome
+app.use(
+    helmet.contentSecurityPolicy({
+      directives: {
+        defaultSrc: ["'self'"], // Restricts default sources
+        fontSrc: [
+          "'self'",
+          "https://fonts.googleapis.com", // For Google Fonts
+          "https://fonts.gstatic.com", // For Google Fonts
+          "https://cdnjs.cloudflare.com", // For Font Awesome fonts
+        ],
+        styleSrc: [
+          "'self'",
+          "'unsafe-inline'", // Needed for inline styles in some cases
+          "https://fonts.googleapis.com", // For Google Fonts styles
+          "https://cdnjs.cloudflare.com", // For Font Awesome CSS
+        ],
+      },
+    })
+  );
 
 
 //1ststep to change pw is to create nodemailer congi  
@@ -45,7 +67,7 @@ debug: true, // Log SMTP connection info
 logger: true,
 });
 
-
+//HANDLE CHANGE PW REQ
 app.post("/change-password" , async (req , res ) => {
     const { email } = req.body;
     if( !email ) return res.status(400).json({msge: "PLEASE PROVIDE EMAIL"});
@@ -73,7 +95,6 @@ app.post("/change-password" , async (req , res ) => {
         res.status(500).json({success: "false" , msge:"error while sending reset password link" , error });
     }
 })
-
 
 //CHANGE THE PREV PASS AND STORE NEW PASSWORD IN DB
 app.put("/update-new-password" , async (req , res ) => {
@@ -104,7 +125,7 @@ app.put("/update-new-password" , async (req , res ) => {
 })
 
 
-
+//SIGN UP REQ
 app.post("/user-signup-data", async( req , res ) => {
     const { name , email , password , mobile_num } = req.body;
     if( !name || !email || !password || !mobile_num ) return res.status(401).json( {"msge" : "sign up data missing"});
@@ -134,6 +155,7 @@ app.post("/user-signup-data", async( req , res ) => {
         return res.status(400).json({ "msge":"error while saving the data"});
     }
 })
+
 
 //profile update req
 app.put("/profile-edit-req", async( req , res ) => {
@@ -189,6 +211,7 @@ app.post('/user-login-req', async( req , res ) => {
 }) 
 
 
+//HNADLE GET USER DATA FOR LOGIN USER
 app.get("/get-user-data/:id", async ( req , res ) => {
     const { id } = req.params;
     if( !id ) return res.status(404).json({"msge":"id is missing"});
@@ -257,6 +280,9 @@ app.post("/new-mf-onetime-investment", async( req , res ) => {
     }
 })
 
+
+
+
 //Handle New Stock investment
 app.post("/new-stock-invest", async( req , res ) => {
     const { id , c_name , high , low , close_val , stockAmount } = req.body;
@@ -282,7 +308,6 @@ app.post("/new-stock-invest", async( req , res ) => {
       return res.status(500).json({ msg: "Internal server error", error: error.message });
     }
 })
-
 //Handle stocks get req
 app.get("/get-stock-data", async( req , res ) => {
     try {
