@@ -47,7 +47,7 @@ const Signup_page = () => {
            if( !name || !email || !password || !mobile_num ) return alert("please fill all the details");
 
            try {
-                const response  = await axios.post('http://localhost:3000/user-signup-data', user_data,{
+                const response  = await axios.post('https://easy-money-by-mashooq.onrender.com/user-signup-data', user_data,{
                    headers:{ "Content-type": "application/json" },
                 } )
             alert("signup success");
@@ -73,7 +73,7 @@ const Signup_page = () => {
     if( !email || !password ) return alert("please fill all the details");
 
     try {
-         const response = await axios.post('http://localhost:3000/user-login-req' , user_data , {
+         const response = await axios.post('https://easy-money-by-mashooq.onrender.com/user-login-req' , user_data , {
             headers:{ 'Content-type' : 'application/json'},
          })
          alert("login success");
@@ -104,7 +104,7 @@ async function  HandlePasswordChange(e){
           }
 
 try {
-const response = await axios.post("http://localhost:3000/change-password", data ,{
+const response = await axios.post("https://easy-money-by-mashooq.onrender.com/change-password", data ,{
   headers: {
     "Content-Type": "application/json",
   },

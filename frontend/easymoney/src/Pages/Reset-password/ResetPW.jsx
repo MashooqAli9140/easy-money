@@ -35,7 +35,7 @@ const ResetPW = () => {
     try {
       // Send the password update request to the server
       const response = await axios.put(
-        "http://localhost:3000/update-new-password", // API endpoint for password update
+        "https://easy-money-by-mashooq.onrender.com/update-new-password", // API endpoint for password update
         data, // Request body with token and new password
         {
           headers: {

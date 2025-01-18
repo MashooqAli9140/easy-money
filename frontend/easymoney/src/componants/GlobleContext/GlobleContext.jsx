@@ -15,7 +15,7 @@ export const GlobleProvider = ( {children} ) => {
        useEffect( () => {
         async function GetUserData( ) {
             try {
-               const response = await axios.get(`http://localhost:3000/get-user-data/${login_user}`,{
+               const response = await axios.get(`https://easy-money-by-mashooq.onrender.com/get-user-data/${login_user}`,{
 
                })
                setlogin_user_data( response.data.userdata )

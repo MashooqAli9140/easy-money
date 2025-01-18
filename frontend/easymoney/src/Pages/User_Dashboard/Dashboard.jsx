@@ -9,8 +9,7 @@ import { useNavigate } from "react-router-dom";
 const Dashboard = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const { login, setLogin , login_user , setlogin_user , login_user_data } = useGlobleContext();
-  const [ username, setusername ] = useState("")
+  const { setLogin  , setlogin_user , login_user_data } = useGlobleContext();
   if (id) {
     setLogin(true);
     setlogin_user(id)

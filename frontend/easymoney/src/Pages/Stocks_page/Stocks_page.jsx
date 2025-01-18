@@ -20,7 +20,7 @@ const Stocks_page = () => {
       useEffect(() => {
         const fetchStocks = async () => {
           try {
-            const response = await axios.get(`http://localhost:3000/get-stock-data`)
+            const response = await axios.get(`https://easy-money-by-mashooq.onrender.com/get-stock-data`)
             setCompanyData( response.data.data[0] );
             return response.status
           } catch (err) {
@@ -65,7 +65,7 @@ const Stocks_page = () => {
               return alert("please enter between 500 to 10k")
             }
             try {
-                const response  = await axios.post("http://localhost:3000/new-stock-invest",stockData,{
+                const response  = await axios.post("https://easy-money-by-mashooq.onrender.com/new-stock-invest",stockData,{
                   headers:{ 'Content-type' : 'application/json'}
                 })
                 alert("data saved success");
