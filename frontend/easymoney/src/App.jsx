@@ -9,6 +9,9 @@ import Stocks_page from './Pages/Stocks_page/Stocks_page.jsx';
 import User_profile from './Pages/User_Profile/User_profile.jsx';
 import Sip_calculator from './Pages/Sip_Calciltor_page/Sip_calculator.jsx';
 import Footer from './componants/footer/Footer.jsx';
+import ResetPW from './Pages/Reset-password/ResetPW.jsx';
+
+
 function App() {
 
   return (
@@ -23,6 +26,7 @@ function App() {
           <Route path='/dashboard/stocks/:id'  element={ <Stocks_page/> } />
           <Route path='/dashboard/userprofile/:id'  element={ <User_profile/> } />
           <Route path='/dashboard/sip-calculator/:id'  element={ <Sip_calculator/> } />
+          <Route path='/reset-password/:token'  element={ <ResetPW/> } />
         </Routes>
       <Footer />
     </BrowserRouter>
