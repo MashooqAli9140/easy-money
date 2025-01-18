@@ -12,6 +12,7 @@ const jwt = require('jsonwebtoken');
 const nodemailer = require('nodemailer')
 const JWT_SECRET = process.env.JWT_SECRET
 const helmet = require('helmet');
+const path = require("path");
 
 
 //DATABCE CONNECTED
@@ -28,6 +29,9 @@ app.use( cors( {
     methods:[ 'GET', 'PUT' , 'POST' , 'DELETE'],
     credentials:true, //Allow cookie if needed
 }))
+
+// Serve static files from the `dist` directory
+app.use(express.static(path.join(__dirname, "dist" )));
 
 //helmet use for cdnjs fonts and icon from font awesome
 app.use(
