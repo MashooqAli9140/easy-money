@@ -89,7 +89,7 @@ app.post("/change-password" , async (req , res ) => {
           const token = jwt.sign( { email:email } , process.env.JWT_SECRET , { expiresIn:"20min" })
 
           // 4th Step to Send Email with Reset Link
-            const resetLink = `http://localhost:5173/reset-password/${token}`;
+            const resetLink = `https://easy-money-by-mashooq.onrender.com/reset-password/${token}`;
             const mailOptions = {
             from: process.env.EMAIL_USER,
             to: email,
