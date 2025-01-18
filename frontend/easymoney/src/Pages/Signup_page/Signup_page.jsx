@@ -9,6 +9,7 @@ import Navbar from '../../componants/Navbar/Navbar';
 const Signup_page = () => {
     const [openlogin , setopenLogin] = useState("none")
     const [opensignup , setopensignup] = useState("block")
+    const [openreset , setopenreset] = useState("none")
     const [ name , setName ] = useState("");
     const [ email , setEmail ] = useState("");
     const [ password , setPassword ] = useState("");
@@ -21,11 +22,17 @@ const Signup_page = () => {
         e.preventDefault();
         setopenLogin("block");
         setopensignup("none");
+        setopenreset("none")
     }
     function opensignupform(e){
         e.preventDefault();
         setopenLogin("none");
+        setopenreset("none")
         setopensignup("block");
+    } 
+    function openresetform(e){
+        e.preventDefault();
+        setopenreset("block"),setopensignup("none"),setopenLogin("none")
     } 
 
 //SIGN UP REQ FUNCTION
@@ -139,12 +146,13 @@ const Signup_page = () => {
                         <br />
                         <div style={{ fontWeight:"100", display:'flex',flexGrow:"grow", justifyContent:"center", gap:"5px"}}>
                             <p>Forgot password?</p>
-                            <button style={{ cursor:"pointer", background:'none', border:'none',outline:'none',fontSize:"18px",color:"blue"}}> Reset </button>
+                            <button onClick={ (e) =>  openresetform(e)  }  style={{ cursor:"pointer", background:'none', border:'none',outline:'none',fontSize:"18px",color:"blue"}}> Reset </button>
                         </div>
                     </div>
             </div>
         </div>
 {/* //SIGN FORM END */}
+
 <div id='login_form' style={{ display: openlogin }}>
             {/* //form logo */}
             <div style={{ display:"flex",justifyContent:"center", textAlign:'center', width:"100%",objectFit:"fit"}}> 
@@ -174,10 +182,39 @@ const Signup_page = () => {
                         <br />
                         <div style={{ fontWeight:"100", display:'flex',flexGrow:"grow", justifyContent:"center", gap:"5px"}}>
                             <p>Forgot password?</p>
-                            <button style={{ cursor:"pointer", background:'none', border:'none',outline:'none',fontSize:"18px",color:"blue"}}> Reset </button>
+                            <button onClick={ (e) => openresetform(e) } style={{ cursor:"pointer", background:'none', border:'none',outline:'none',fontSize:"18px",color:"blue"}}> Reset </button>
                         </div>
                     </div>
                
+            </div>
+        </div>
+
+<div id='login_form' style={{ display: openreset }}>
+            {/* //form logo */}
+            <div style={{ display:"flex",justifyContent:"center", textAlign:'center', width:"100%",objectFit:"fit"}}> 
+                <img style={{ width:"75%", borderRadius:"12px"}}  src={Logo} alt="Logo" />
+            </div>
+            {/* //signup or login form inputs */}
+            <div id='form-inputs'>
+                <form onSubmit={ (e) => SendLoginReq(e) }>
+                    <div style={{ padding:"5px 5px 5px 5px"}}>
+                       <input value={ email } onChange={ (e) => setEmail( e.target.value )} id='name-input' type="text" placeholder='Enter Email' />
+                    </div>
+                    <div style={{ padding:"5px 5px 5px 5px", marginTop:"10px"}}>
+                        <button type='submit' id='signup-form-btn'> Reset </button>
+                    </div>
+                </form>
+                    <div style={{ padding:"5px 5px 5px 5px", marginTop:"10px"}}>
+                        <div style={{ fontWeight:"100", display:'flex',flexGrow:"grow", justifyContent:"center", gap:"5px"}}>
+                            <p>Don't have an account?</p>
+                            <button onClick={ (e) => opensignupform(e) } style={{ cursor:"pointer", background:'none', border:'none',outline:'none',fontSize:"18px",color:"blue"}}> Signup</button>
+                        </div>
+                        
+                    </div>
+                    <div style={{ fontWeight:"100", display:'flex',flexGrow:"grow", justifyContent:"center", gap:"5px"}}>
+                            <p>Already have an account?</p>
+                            <button onClick={ (e) => openloginform(e) } style={{ cursor:"pointer", background:'none', border:'none',outline:'none',fontSize:"18px",color:"blue"}}> Login</button>
+                    </div>
             </div>
         </div>
 
