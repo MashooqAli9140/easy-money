@@ -24,7 +24,7 @@ app.use( bodyparser.json());
 
 app.use( cors( {
     origin: [
-        'http://localhost:5173', //for development
+        'https://easy-money-by-mashooq.onrender.com', //for deployed
     ],
     methods:[ 'GET', 'PUT' , 'POST' , 'DELETE'],
     credentials:true, //Allow cookie if needed
