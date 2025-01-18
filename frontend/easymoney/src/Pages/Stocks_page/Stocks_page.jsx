@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import './Stocks_page.css';
 import axios from 'axios';
-
 const Stocks_page = () => {
       const [ CompanyData , setCompanyData ] = useState([])
       const [ loading ,setloading ] = useState(true);

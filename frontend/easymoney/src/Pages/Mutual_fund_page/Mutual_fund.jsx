@@ -263,6 +263,7 @@ const Mutual_fund = () => {
              <h2 style={{ color:'green'}}> Investment Done <i class="fa-solid fa-check"></i> </h2>
  </div>{/* //ONE TIME INVESTMENT FORM END */}
 
+
     </>
 
   )

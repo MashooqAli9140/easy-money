@@ -8,14 +8,13 @@ import Mutual_fund from './Pages/Mutual_fund_page/Mutual_fund.jsx';
 import Stocks_page from './Pages/Stocks_page/Stocks_page.jsx';
 import User_profile from './Pages/User_Profile/User_profile.jsx';
 import Sip_calculator from './Pages/Sip_Calciltor_page/Sip_calculator.jsx';
-
+import Footer from './componants/footer/Footer.jsx';
 function App() {
 
   return (
     <> 
 <GlobleProvider>
     <BrowserRouter>
-
         <Routes>
           <Route path='/'  element={ <Home_hero/> } />
           <Route path='/signup'  element={ <Signup_page/> } />
@@ -25,7 +24,7 @@ function App() {
           <Route path='/dashboard/userprofile/:id'  element={ <User_profile/> } />
           <Route path='/dashboard/sip-calculator/:id'  element={ <Sip_calculator/> } />
         </Routes>
- 
+      <Footer />
     </BrowserRouter>
 </GlobleProvider>
  

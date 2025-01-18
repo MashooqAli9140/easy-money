@@ -3,6 +3,7 @@ import './Dashboard.css';
 import { useGlobleContext } from "../../componants/GlobleContext/GlobleContext";
 import { useParams } from "react-router-dom";
 
+
 const Portfolio = () => {
   const { setLogin , setlogin_user, login_user_data } = useGlobleContext(); // Access global context
   const { id } = useParams(); // Get `id` parameter from the URL
@@ -40,8 +41,8 @@ const Portfolio = () => {
   }, [login_user_data.stocks_investments, login_user_data.sip_fund_Details]); // Dependencies to watch for changes
 
   return (
+    <>
     <div style={{ padding: "10px 10px 10px 10px" }}>
-
       {/* Portfolio Header */}
       <div id='portfolio-header'>
         <div style={{ borderRadius: "25px", textAlign: "left", padding: "10px 20px 10px 20px", backgroundColor: "#00B852" }}>
@@ -145,7 +146,8 @@ const Portfolio = () => {
         ))}
       </div>
 
-    </div>
+    </div> 
+</>
   )
 }
 

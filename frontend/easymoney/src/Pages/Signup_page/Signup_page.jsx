@@ -5,6 +5,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useGlobleContext } from '../../componants/GlobleContext/GlobleContext';
 import Navbar from '../../componants/Navbar/Navbar';
+import Footer from '../../componants/footer/Footer.jsx'
 
 const Signup_page = () => {
     const [openlogin , setopenLogin] = useState("none")
@@ -181,6 +182,7 @@ const Signup_page = () => {
         </div>
 
     </div>
+    <Footer />
     </>
   )
 }

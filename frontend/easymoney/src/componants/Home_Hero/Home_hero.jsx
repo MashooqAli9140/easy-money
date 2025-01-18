@@ -36,9 +36,6 @@ const Home_hero = () => {
     </div>
     <Home_Hero_2 />
     <Signup />
-    <Footer />
-
-
     </>
   )
 }
