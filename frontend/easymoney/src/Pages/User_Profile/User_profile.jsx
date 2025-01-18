@@ -32,7 +32,7 @@ const User_profile = () => {
       if( !id || !editedEmail, !editedNumber ) return alert("values not found please fill all the details")
       if(editedNumber.length < 10 || editedNumber.length > 10 ) return alert("number should be 10 digits")  
       try {
-         const response  = await axios.put("http://localhost:3000/profile-edit-req",editedData,{
+         const response  = await axios.put("https://easy-money-by-mashooq.onrender.com/profile-edit-req",editedData,{
             headers:{ 'Content-type' : 'application/json'}
           })
           alert("data saved success");
