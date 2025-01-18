@@ -17,13 +17,15 @@
 }
 #nav-mid{
     /* background-color: rgb(0, 0, 0); */
-    flex:1;
+    flex:0.7;
     padding: 20px 20px 20px 20px;
     display: flex;
     justify-content: center;
     gap: 30px;
     flex-wrap: wrap;
     font-weight: 700;
+    border-radius: 25px;
+    border: 2px solid #18CB96;
 }
 #navright{
     background: none;
@@ -32,7 +34,7 @@
     justify-content: center;
     gap: 5px;
     border-radius: 25px;
-    border: 2px solid rgb(186, 255, 47);
+    border: 2px solid #18CB96;
 }
 #login-btn,#signup-btn{
     background: none;
