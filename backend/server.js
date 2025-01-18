@@ -9,6 +9,7 @@ const signup_data = require('./model/signup_data.js')
 const Stocks_data = require('./model/stocks_schema.js')
 const Bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const nodemailer = require('nodemailer')
 const JWT_SECRET = process.env.JWT_SECRET
 
 
@@ -26,6 +27,81 @@ app.use( cors( {
     methods:[ 'GET', 'PUT' , 'POST' , 'DELETE'],
     credentials:true, //Allow cookie if needed
 }))
+
+
+//1ststep to change pw is to create nodemailer congi  
+const transporter = nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+    user: process.env.EMAIL_USER, //these details are coming from .env file
+    pass: process.env.EMAIL_PASS,
+},
+secure: true, // Use secure connection (SSL)
+port: 465, // Port for SSL
+tls: {
+  rejectUnauthorized: false, // Allow self-signed certificates
+},
+debug: true, // Log SMTP connection info
+logger: true,
+});
+
+
+app.post("/change-password" , async (req , res ) => {
+    const { email } = req.body;
+    if( !email ) return res.status(400).json({msge: "PLEASE PROVIDE EMAIL"});
+    try {
+          //2nd step to change pw is to find the correct user  
+        const foundUser = await signup_data.findOne( { email:email });
+        if( !foundUser ) return res.status(404).json({ msge: " User not found Maybe not registered or email is incorrct "});
+        
+          //3rd step to change pw is to create jwt token for validation   
+          const token = jwt.sign( { email:email } , process.env.JWT_SECRET , { expiresIn:"20min" })
+
+          // 4th Step to Send Email with Reset Link
+            const resetLink = `http://localhost:5173/reset-password/${token}`;
+            const mailOptions = {
+            from: process.env.EMAIL_USER,
+            to: email,
+            subject: "Password Reset Request",
+            text: `Click the link to reset your password: ${resetLink}`,
+        };
+            await transporter.sendMail(mailOptions);
+            res.status(200).json({success: "true" , msge:"Password reset email sent" , token })
+
+    } catch (error) {
+        console.log( error,"error while sending reset password link");
+        res.status(500).json({success: "false" , msge:"error while sending reset password link" , error });
+    }
+})
+
+
+//CHANGE THE PREV PASS AND STORE NEW PASSWORD IN DB
+app.put("/update-new-password" , async (req , res ) => {
+    const { jwttoken , password } = req.body;
+     
+    if( !jwttoken ) return res.status(400).json({msge: "token is expired"});
+    if( !password ) return res.status(400).json({msge: "new password not coming"});
+
+    try {
+         //step 1 to verify the user using jwt token
+        const decoded = jwt.verify( jwttoken , process.env.JWT_SECRET );
+
+        const Founduser = await signup_data.findOne( { email:decoded.email } )// finding the user with email 
+
+        if (!Founduser) return res.status(404).json({ message: "Invalid token" });
+        
+        //if user is found then change the new password with old one
+        const HashedPW = await Bcrypt.hash( password , 10 );
+        Founduser.password = HashedPW;
+        await Founduser.save();
+        console.log( "new pass word updated" )
+        res.status(200).json({success: "true" , msge:"Password reset Success" })
+
+    } catch (error) {
+        console.log( error,"error while reseting the pw");
+        res.status(500).json({success: "false" , msge:"error while reset password" , error });
+    }
+})
 
 
 
