@@ -55,7 +55,6 @@ const User_profile = () => {
       alert("Data saved successfully!");
       seteditModeOn(false); // Exit edit mode
       setisprofileupdated(true); // Show success message
-      window.location.reload();
       return response.status;
     } catch (error) {
       console.log(error.message);
@@ -156,97 +155,6 @@ const User_profile = () => {
             />
           </div>
 
-          {/* Email Section */}
-          <div style={{ padding: "2px 10px 2px 10px", fontWeight: "100", color: "#212426" }}>
-            <h4 style={{ fontWeight: '100' }}> Email </h4>
-          </div>
-          <div
-            style={{
-              margin: "10px 0px 10px 0px",
-              display: "flex",
-              justifyContent: "space-between",
-              backgroundColor: "#212426",
-              alignContent: 'center',
-              alignItems: 'center',
-              padding: "13px 16px 10px 16px",
-              color: "white",
-              borderRadius: "25px"
-            }}
-          >
-            <input
-              onChange={(e) => seteditedEmail(e.target.value)}
-              style={{
-                display: editModeOn ? "block" : "none",
-                padding: "10px 14px 10px 14px",
-                fontSize: "14px",
-                width: "100%",
-                borderRadius: "15px"
-              }}
-              type="text"
-              placeholder='Enter new email'
-            />
-            <input
-              disabled
-              value={login_user_data && login_user_data.email}
-              style={{
-                display: editModeOn ? "none" : "block",
-                color: "white",
-                padding: "10px 14px 10px 14px",
-                fontSize: "14px",
-                width: "100%",
-                borderRadius: "15px"
-              }}
-              type="text"
-              placeholder='Email'
-            />
-          </div>
-
-          {/* Mobile Number Section */}
-          <div style={{ padding: "2px 10px 2px 10px", fontWeight: "100", color: "#212426" }}>
-            <h4 style={{ fontWeight: '100' }}> Mobile Number </h4>
-          </div>
-          <div
-            style={{
-              margin: "10px 0px 10px 0px",
-              display: "flex",
-              justifyContent: "space-between",
-              backgroundColor: "#212426",
-              alignContent: 'center',
-              alignItems: 'center',
-              padding: "13px 16px 10px 16px",
-              color: "white",
-              borderRadius: "25px"
-            }}
-          >
-            <input
-              onChange={(e) => seteditedNumber(e.target.value)}
-              style={{
-                display: editModeOn ? "block" : "none",
-                padding: "10px 14px 10px 14px",
-                fontSize: "14px",
-                width: "100%",
-                borderRadius: "15px"
-              }}
-              type="number"
-              minLength={"10"}
-              placeholder='Enter new mobile number'
-            />
-            <input
-              disabled
-              value={login_user_data && login_user_data.mobile_num}
-              style={{
-                display: editModeOn ? "none" : "block",
-                color: "white",
-                padding: "10px 14px 10px 14px",
-                fontSize: "14px",
-                width: "100%",
-                borderRadius: "15px"
-              }}
-              type="text"
-              placeholder='Mobile Number'
-            />
-          </div>
-
           {/* Buttons Section */}
           <div
             style={{
@@ -290,6 +198,30 @@ const User_profile = () => {
               }}
             >
               Edit Profile
+            </button>
+          </div>
+
+          {/* Go Back Button */}
+          <div
+            style={{
+              padding: "10px 10px 10px 10px",
+              marginTop: "20px"
+            }}
+          >
+            <button
+              onClick={() => navigate(-1)} // Navigate back to the previous page
+              style={{
+                cursor: "pointer",
+                backgroundColor: "#FF5C5C",
+                padding: "10px 5px 10px 5px",
+                fontWeight: "100",
+                borderRadius: "10px",
+                color: "white",
+                width: "100%",
+                border: "none"
+              }}
+            >
+              Go Back
             </button>
           </div>
         </div>
