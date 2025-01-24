@@ -13,7 +13,7 @@ const nodemailer = require('nodemailer')
 const JWT_SECRET = process.env.JWT_SECRET
 const helmet = require('helmet');
 const path = require("path");
-
+const verifyToken = require('./middleware/verifyJWT.js'); // Import the middleware
 
 //DATABCE CONNECTED
 connectDB();
@@ -193,7 +193,7 @@ app.put("/profile-edit-req", async( req , res ) => {
 //Handle login req
 app.post('/user-login-req', async( req , res ) => {
     const { email , password } = req.body;
-    if( !email , !password ) return res.status(401),json( {'msge':'email or password is missing'});
+    if( !email || !password ) return res.status(401),json( {'msge':'email or password is missing'});
 
     try {
      //check if email is registered or not
@@ -210,22 +210,24 @@ app.post('/user-login-req', async( req , res ) => {
          JWT_SECRET,
          { expiresIn: "1h"}
      )
-     return res.status(200).json({ 'msge': 'login req success', userDetails: FoundUser , token: token })
+     return res.status(200).json({ 'msge': 'login req success', userDetails: FoundUser , token })
         
     } catch (error) {
-      console.log(error)
-      return res.status(401).json({'msge':'error while login from server', error })
-    }
+      return res.status(500).json({ 'msge': 'Internal server error', error });    }
 
 }) 
 
 
 //HNADLE GET USER DATA FOR LOGIN USER
-app.get("/get-user-data/:id", async ( req , res ) => {
+app.get("/get-user-data/:id", verifyToken,  async ( req , res ) => {
     const { id } = req.params;
     if( !id ) return res.status(404).json({"msge":"id is missing"});
+    const { user } = req; // This comes from the decoded JWT (user info stored in the middleware)
+    if (user.id !== id) {
+      return res.status(403).json({ msge: 'Access denied. You can only view your own data.' });
+    }
 
-    //if id is ok then return userdata
+    //if id matches with token id then return userdata
     try {
         const userdata = await signup_data.findOne( { _id : id})
         if( !userdata ) return res.status(401).json({"msge":"id is mismatch or data is not loading"});
