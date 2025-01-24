@@ -13,8 +13,8 @@ export const GlobleProvider = ({ children }) => {
   //create function for getting user data from backend
   useEffect(() => {
     async function GetUserData() {
-      const token = localStorage.getItem("jwtToken"); // Retrieve the JWT token from localStorage
-
+        const token = localStorage.getItem("token"); // Retrieve the JWT token
+        
 if (token) {
         try {
           const response = await axios.get(
