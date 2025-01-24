@@ -14,7 +14,7 @@ const Home_hero = () => {
       <div id="home-hero">
         <div id="home-hero-right">
           <div id="grow-icon-div">
-            <img style={{ width: "100%" }} src={Grow} alt="grow_icon" />
+            {/* <img style={{ width: "100%" }} src={Grow} alt="grow_icon" /> */}
           </div>
         </div>
         <div id="home-hero-left">
@@ -36,8 +36,6 @@ const Home_hero = () => {
                 borderRadius: "25px",
                 width: "100%",
                 padding: "12px 8px 12px 8px",
-                color: "white",
-                border: "2px solid #18CB96",
                 outline: "none",
               }}
             >

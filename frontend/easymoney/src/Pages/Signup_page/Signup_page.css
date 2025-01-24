@@ -1,3 +1,11 @@
+#signup-main-bg{
+    background-image: url('/images/signup-page-bg.gif');
+    background-repeat: no-repeat; /* Prevent repetition */
+    background-position: center; /* Center the image */
+    background-size: cover; /* Ensure it covers the entire area */
+}
+
+
 #signup_form,#login_form{
     background-color: rgb(255, 255, 255);
     margin: 0 auto 0;
