@@ -79,7 +79,7 @@ const Mutual_fund = () => {
 
 
             try {
-              const response  = await axios.post("https://easy-money-by-mashooq.onrender.com/new-sip-req",sipdata,{
+              const response  = await axios.post("https://easy-money-by-mashooq-ali.onrender.com/new-sip-req",sipdata,{
                 headers:{ 'Content-type' : 'application/json'}
               })
               alert("data saved success");
@@ -106,7 +106,7 @@ const Mutual_fund = () => {
           if( oneTimeAmount < 1000 || oneTimeAmount > 100000 ) return alert("please enter amount betwen 1k to 100k");
 
             try {
-              const response  = await axios.post("https://easy-money-by-mashooq.onrender.com/new-mf-onetime-investment",OnetimeData,{
+              const response  = await axios.post("https://easy-money-by-mashooq-ali.onrender.com/new-mf-onetime-investment",OnetimeData,{
                 headers:{ 'Content-type' : 'application/json'}
               })
               alert("data saved success");

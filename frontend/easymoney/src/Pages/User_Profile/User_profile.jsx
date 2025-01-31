@@ -35,7 +35,7 @@ const User_profile = () => {
       return alert("number should be 10 digits");
     try {
       const response = await axios.put(
-        "https://easy-money-by-mashooq.onrender.com/profile-edit-req",
+        "https://easy-money-by-mashooq-ali.onrender.com/profile-edit-req",
         editedData,
         {
           headers: { "Content-type": "application/json" },

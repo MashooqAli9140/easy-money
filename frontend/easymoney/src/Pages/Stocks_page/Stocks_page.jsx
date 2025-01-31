@@ -21,7 +21,7 @@ const Stocks_page = () => {
     const fetchStocks = async () => {
       try {
         const response = await axios.get(
-          `https://easy-money-by-mashooq.onrender.com/get-stock-data`
+          `https://easy-money-by-mashooq-ali.onrender.com/get-stock-data`
         );
         setCompanyData(response.data.data[0]);
         return response.status;
@@ -74,7 +74,7 @@ const Stocks_page = () => {
     }
     try {
       const response = await axios.post(
-        "https://easy-money-by-mashooq.onrender.com/new-stock-invest",
+        "https://easy-money-by-mashooq-ali.onrender.com/new-stock-invest",
         stockData,
         {
           headers: { "Content-type": "application/json" },

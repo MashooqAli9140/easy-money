@@ -49,7 +49,7 @@ const Signup_page = () => {
 
     try {
       const response = await axios.post(
-        "https://easy-money-by-mashooq.onrender.com/user-signup-data",
+        "https://easy-money-by-mashooq-ali.onrender.com/user-signup-data",
         user_data,
         {
           headers: { "Content-type": "application/json" },
@@ -80,7 +80,7 @@ const Signup_page = () => {
 
     try {
       const response = await axios.post(
-        "https://easy-money-by-mashooq.onrender.com/user-login-req",
+        "https://easy-money-by-mashooq-ali.onrender.com/user-login-req",
         user_data,
         {
           headers: { "Content-type": "application/json" },
@@ -116,7 +116,7 @@ const Signup_page = () => {
 
     try {
       const response = await axios.post(
-        "https://easy-money-by-mashooq.onrender.com/change-password",
+        "https://easy-money-by-mashooq-ali.onrender.com/change-password",
         data,
         {
           headers: {

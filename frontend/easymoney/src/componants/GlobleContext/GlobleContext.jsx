@@ -18,7 +18,7 @@ export const GlobleProvider = ({ children }) => {
 if (token) {
         try {
           const response = await axios.get(
-            `https://easy-money-by-mashooq.onrender.com/get-user-data/${login_user}`,
+            `https://easy-money-by-mashooq-ali.onrender.com/get-user-data/${login_user}`,
             {
             headers: {
                     Authorization: `Bearer ${token}`, // Send the token in the Authorization header
