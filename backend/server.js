@@ -24,7 +24,7 @@ app.use( bodyparser.json());
 
 app.use( cors( {
     origin: [
-        'https://easy-money-by-mashooq.onrender.com', //for deployed
+        'https://easy-money-by-mashooq-ali.onrender.com', //for deployed
     ],
     methods:[ 'GET', 'PUT' , 'POST' , 'DELETE'],
     credentials:true, //Allow cookie if needed
@@ -89,7 +89,7 @@ app.post("/change-password" , async (req , res ) => {
           const token = jwt.sign( { email:email } , process.env.JWT_SECRET , { expiresIn:"20min" })
 
           // 4th Step to Send Email with Reset Link
-            const resetLink = `https://easy-money-by-mashooq.onrender.com/reset-password/${token}`;
+            const resetLink = `https://easy-money-by-mashooq-ali.onrender.com/reset-password/${token}`;
             const mailOptions = {
             from: process.env.EMAIL_USER,
             to: email,
