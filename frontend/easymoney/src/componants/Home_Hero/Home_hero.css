@@ -2,7 +2,7 @@
     width: 100%; /* Make sure the element has dimensions */
     background-image: url('/images/NBG.jpg'); /* Adjusted path */
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: left;
     background-size: cover;
     /* background-color: #9921e8; */
     /* background-image: linear-gradient(135deg, #132d75, #4e13ac); */
@@ -68,6 +68,9 @@
 }
 
 @media screen and (max-width:900px) {
+    #home-hero{
+        background-position: right;
+        }
     #home-hero-right{
       display: none;
     }
