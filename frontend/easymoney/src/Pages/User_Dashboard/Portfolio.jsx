@@ -9,6 +9,9 @@ const Portfolio = () => {
   const { id } = useParams(); // Get `id` parameter from the URL
   const today = new Date();
   const date = today.getDate(); // Get today's date
+  today.setDate(1) // Set to the first day of the month to avoid overflow
+  today.setMonth(today.getMonth() + 1); // Move to next month
+  const nextMonth = today.toLocaleString('default', { month: 'long' }); //get month in string format
   const monthName = new Intl.DateTimeFormat('en-US', { month: 'long' }).format(today); // Get full month name
   
   // State variables for tracking total investments and counts
@@ -109,7 +112,7 @@ const Portfolio = () => {
             <div style={{ width: "100%", padding: "20px 20px 20px 20px", border: "1px solid lightgrey", borderRadius: "25px" }}>
               <div>
                 <h4 style={{ fontWeight: "100", marginBottom: "5px" }}> Date </h4>
-                <h3> {data.sip_date} {monthName} </h3>
+                <h3> {data.sip_date} {nextMonth} </h3>
               </div>
             </div>
           </div>
